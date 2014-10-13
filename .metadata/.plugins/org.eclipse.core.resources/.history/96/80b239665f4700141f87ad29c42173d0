@@ -1,0 +1,349 @@
+2014/09/29 00:29:58 [trace] [system.CModule] Loading "log" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:29:58 [trace] [system.CModule] Loading "request" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:29:58 [trace] [system.CModule] Loading "urlManager" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:29:58 [trace] [system.base.CModule] Loading "user" module
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:29:58 [trace] [system.CModule] Loading "user" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LogoutController.php (12)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:29:58 [trace] [system.CModule] Loading "session" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LogoutController.php (12)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:29:58 [trace] [system.CModule] Loading "log" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:29:58 [trace] [system.CModule] Loading "request" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:29:58 [trace] [system.CModule] Loading "urlManager" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:29:58 [trace] [system.base.CModule] Loading "user" module
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:29:58 [trace] [system.CModule] Loading "user" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (12)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:29:58 [trace] [system.CModule] Loading "session" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (12)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:29:58 [trace] [system.CModule] Loading "messages" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/UserModule.php (141)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/views/user/login.php (2)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (28)
+2014/09/29 00:29:58 [trace] [system.CModule] Loading "widgetFactory" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/views/layouts/column1.php (2)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (28)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:29:58 [trace] [system.base.CModule] Loading "message" module
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/views/layouts/main.php (64)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/views/layouts/column1.php (6)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (28)
+2014/09/29 00:29:58 [trace] [system.db.ar.CActiveRecord] Message.count()
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/message/models/Message.php (232)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/message/MessageModule.php (69)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/views/layouts/main.php (66)
+2014/09/29 00:29:58 [trace] [system.CModule] Loading "db" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/message/models/Message.php (232)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/message/MessageModule.php (69)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/views/layouts/main.php (66)
+2014/09/29 00:29:58 [trace] [system.db.CDbConnection] Opening DB connection
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/message/models/Message.php (232)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/message/MessageModule.php (69)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/views/layouts/main.php (66)
+2014/09/29 00:29:58 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `messages`
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/message/models/Message.php (232)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/message/MessageModule.php (69)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/views/layouts/main.php (66)
+2014/09/29 00:29:58 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `messages`
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/message/models/Message.php (232)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/message/MessageModule.php (69)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/views/layouts/main.php (66)
+2014/09/29 00:29:58 [trace] [system.db.CDbCommand] Querying SQL: SELECT COUNT(*) FROM `messages` `t` WHERE ((t.receiver_id = :receiverId) AND (t.deleted_by <> :deleted_by_receiver OR t.deleted_by IS NULL)) AND (t.is_read = "0")
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/message/models/Message.php (232)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/message/MessageModule.php (69)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/views/layouts/main.php (66)
+2014/09/29 00:29:58 [trace] [system.CModule] Loading "coreMessages" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/views/layouts/main.php (77)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/views/layouts/column1.php (6)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (28)
+2014/09/29 00:29:58 [trace] [system.CModule] Loading "clientScript" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (28)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:04 [trace] [system.CModule] Loading "log" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:04 [trace] [system.CModule] Loading "request" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:04 [trace] [system.CModule] Loading "urlManager" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:04 [trace] [system.base.CModule] Loading "user" module
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:04 [trace] [system.CModule] Loading "user" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (12)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:04 [trace] [system.CModule] Loading "session" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (12)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:04 [trace] [system.CModule] Loading "db" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/components/UserIdentity.php (27)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/components/UserIdentity.php (27)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/models/UserLogin.php (52)
+2014/09/29 00:30:04 [trace] [system.db.CDbConnection] Opening DB connection
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/components/UserIdentity.php (27)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/components/UserIdentity.php (27)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/models/UserLogin.php (52)
+2014/09/29 00:30:04 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `tbl_users`
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/components/UserIdentity.php (27)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/components/UserIdentity.php (27)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/models/UserLogin.php (52)
+2014/09/29 00:30:04 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `tbl_users`
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/components/UserIdentity.php (27)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/components/UserIdentity.php (27)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/models/UserLogin.php (52)
+2014/09/29 00:30:04 [trace] [system.db.ar.CActiveRecord] User.findByAttributes()
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/components/UserIdentity.php (27)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/models/UserLogin.php (52)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (19)
+2014/09/29 00:30:04 [trace] [system.db.CDbCommand] Querying SQL: SELECT id, username, email, createtime, lastvisit, superuser, status, password, activkey FROM `tbl_users` `t` WHERE `t`.`username`=:yp0 LIMIT 1
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/components/UserIdentity.php (27)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/models/UserLogin.php (52)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (19)
+2014/09/29 00:30:04 [trace] [system.base.CModule] Loading "rights" module
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/rights/components/Rights.php (271)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/rights/components/Rights.php (254)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/rights/components/Rights.php (287)
+2014/09/29 00:30:04 [trace] [system.CModule] Loading "authManager" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/rights/RightsModule.php (129)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/rights/components/Rights.php (271)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/rights/components/Rights.php (254)
+2014/09/29 00:30:04 [trace] [system.CModule] Loading "authorizer" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/rights/RightsModule.php (192)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/rights/components/Rights.php (287)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/rights/components/RWebUser.php (21)
+2014/09/29 00:30:04 [trace] [system.db.CDbCommand] Querying SQL: SELECT *
+FROM `AuthAssignment`
+WHERE userid=:userid
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/rights/components/RAuthorizer.php (341)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/rights/components/RWebUser.php (21)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/models/UserLogin.php (57)
+2014/09/29 00:30:04 [trace] [system.db.ar.CActiveRecord] User.findByPk()
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (34)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (20)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:04 [trace] [system.db.CDbCommand] Querying SQL: SELECT id, username, email, createtime, lastvisit, superuser, status, password, activkey FROM `tbl_users` `t` WHERE `t`.`id`=1 LIMIT 1
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (34)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (20)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:04 [trace] [system.db.ar.CActiveRecord] User.findByPk()
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/UserModule.php (226)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/UserModule.php (178)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/models/User.php (47)
+2014/09/29 00:30:04 [trace] [system.db.CDbCommand] Querying SQL: SELECT id, username, email, createtime, lastvisit, superuser, status FROM `tbl_users` `t` WHERE (status=1) AND (`t`.`id`=1) LIMIT 1
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/UserModule.php (226)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/UserModule.php (178)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/models/User.php (47)
+2014/09/29 00:30:04 [trace] [system.CModule] Loading "messages" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/UserModule.php (141)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/models/User.php (49)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (36)
+2014/09/29 00:30:04 [trace] [system.db.ar.CActiveRecord] User.findAll()
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (36)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (20)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:04 [trace] [system.db.CDbCommand] Querying SQL: SELECT id, username, email, createtime, lastvisit, superuser, status FROM `tbl_users` `t` WHERE `t`.`username`=:ycp0 LIMIT 2
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (36)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (20)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:04 [trace] [system.db.ar.CActiveRecord] User.findAll()
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (36)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (20)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:04 [trace] [system.db.CDbCommand] Querying SQL: SELECT id, username, email, createtime, lastvisit, superuser, status FROM `tbl_users` `t` WHERE `t`.`email`=:ycp1 LIMIT 2
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (36)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (20)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:04 [trace] [system.db.ar.CActiveRecord] User.update()
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (36)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (20)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:04 [trace] [system.db.ar.CActiveRecord] User.updateByPk()
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (36)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (20)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:04 [trace] [system.db.CDbCommand] Executing SQL: UPDATE `tbl_users` SET `id`=:yp0, `username`=:yp1, `email`=:yp2, `createtime`=:yp3, `lastvisit`=:yp4, `superuser`=:yp5, `status`=:yp6, `password`=:yp7, `activkey`=:yp8 WHERE `tbl_users`.`id`=1
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (36)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (20)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:04 [trace] [system.CModule] Loading "log" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:04 [trace] [system.CModule] Loading "request" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:04 [trace] [system.CModule] Loading "urlManager" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:04 [trace] [system.base.CModule] Loading "user" module
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:04 [trace] [system.CModule] Loading "user" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/ProfileController.php (97)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/ProfileController.php (16)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:04 [trace] [system.CModule] Loading "session" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/ProfileController.php (97)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/ProfileController.php (16)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:04 [trace] [system.CModule] Loading "db" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/UserModule.php (226)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/UserModule.php (226)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/ProfileController.php (98)
+2014/09/29 00:30:04 [trace] [system.db.CDbConnection] Opening DB connection
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/UserModule.php (226)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/UserModule.php (226)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/ProfileController.php (98)
+2014/09/29 00:30:04 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `tbl_users`
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/UserModule.php (226)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/UserModule.php (226)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/ProfileController.php (98)
+2014/09/29 00:30:04 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `tbl_users`
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/UserModule.php (226)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/UserModule.php (226)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/ProfileController.php (98)
+2014/09/29 00:30:04 [trace] [system.db.ar.CActiveRecord] User.findByPk()
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/UserModule.php (226)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/ProfileController.php (98)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/ProfileController.php (16)
+2014/09/29 00:30:04 [trace] [system.db.CDbCommand] Querying SQL: SELECT id, username, email, createtime, lastvisit, superuser, status FROM `tbl_users` `t` WHERE (status=1) AND (`t`.`id`=1) LIMIT 1
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/UserModule.php (226)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/ProfileController.php (98)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/ProfileController.php (16)
+2014/09/29 00:30:04 [trace] [system.db.ar.CActiveRecord] lazy loading User.profile
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/ProfileController.php (19)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:04 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `tbl_profiles`
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/ProfileController.php (19)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:04 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `tbl_profiles`
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/ProfileController.php (19)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:04 [trace] [system.db.CDbCommand] Querying SQL: SELECT `profile`.`user_id` AS `t1_c0`, `profile`.`lastname` AS `t1_c1`, `profile`.`firstname` AS `t1_c2`, `profile`.`birthday` AS `t1_c3`, `profile`.`Phone` AS `t1_c4` FROM `tbl_profiles` `profile`  WHERE (`profile`.`user_id`=:ypl0)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/ProfileController.php (19)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:04 [trace] [system.CModule] Loading "messages" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/UserModule.php (141)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/views/profile/profile.php (1)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/ProfileController.php (20)
+2014/09/29 00:30:04 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `tbl_profiles_fields`
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/views/profile/profile.php (21)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/views/profile/profile.php (21)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/ProfileController.php (20)
+2014/09/29 00:30:04 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `tbl_profiles_fields`
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/views/profile/profile.php (21)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/views/profile/profile.php (21)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/ProfileController.php (20)
+2014/09/29 00:30:04 [trace] [system.db.ar.CActiveRecord] ProfileField.findAll()
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/views/profile/profile.php (21)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/ProfileController.php (20)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:04 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `tbl_profiles_fields` `t` WHERE visible>=1 ORDER BY position
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/views/profile/profile.php (21)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/ProfileController.php (20)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:04 [trace] [system.CModule] Loading "widgetFactory" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/views/layouts/column1.php (2)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/ProfileController.php (20)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:04 [trace] [system.base.CModule] Loading "message" module
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/views/layouts/main.php (64)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/views/layouts/column1.php (6)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/ProfileController.php (20)
+2014/09/29 00:30:04 [trace] [system.db.ar.CActiveRecord] Message.count()
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/message/models/Message.php (232)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/message/MessageModule.php (69)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/views/layouts/main.php (66)
+2014/09/29 00:30:04 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `messages`
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/message/models/Message.php (232)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/message/MessageModule.php (69)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/views/layouts/main.php (66)
+2014/09/29 00:30:04 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `messages`
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/message/models/Message.php (232)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/message/MessageModule.php (69)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/views/layouts/main.php (66)
+2014/09/29 00:30:04 [trace] [system.db.CDbCommand] Querying SQL: SELECT COUNT(*) FROM `messages` `t` WHERE ((t.receiver_id = :receiverId) AND (t.deleted_by <> :deleted_by_receiver OR t.deleted_by IS NULL)) AND (t.is_read = "0")
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/message/models/Message.php (232)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/message/MessageModule.php (69)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/views/layouts/main.php (66)
+2014/09/29 00:30:04 [trace] [system.CModule] Loading "coreMessages" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/views/layouts/main.php (77)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/views/layouts/column1.php (6)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/ProfileController.php (20)
+2014/09/29 00:30:04 [trace] [system.CModule] Loading "clientScript" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/ProfileController.php (20)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:07 [trace] [system.CModule] Loading "log" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:07 [trace] [system.CModule] Loading "request" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:07 [trace] [system.CModule] Loading "urlManager" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:07 [trace] [system.base.CModule] Loading "user" module
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:07 [trace] [system.CModule] Loading "user" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LogoutController.php (12)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:07 [trace] [system.CModule] Loading "session" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LogoutController.php (12)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:07 [trace] [system.CModule] Loading "log" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:07 [trace] [system.CModule] Loading "request" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:07 [trace] [system.CModule] Loading "urlManager" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:07 [trace] [system.base.CModule] Loading "user" module
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:07 [trace] [system.CModule] Loading "user" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (12)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:07 [trace] [system.CModule] Loading "session" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (12)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:07 [trace] [system.CModule] Loading "messages" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/UserModule.php (141)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/views/user/login.php (2)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (28)
+2014/09/29 00:30:07 [trace] [system.CModule] Loading "widgetFactory" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/views/layouts/column1.php (2)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (28)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
+2014/09/29 00:30:07 [trace] [system.base.CModule] Loading "message" module
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/views/layouts/main.php (64)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/views/layouts/column1.php (6)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (28)
+2014/09/29 00:30:07 [trace] [system.db.ar.CActiveRecord] Message.count()
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/message/models/Message.php (232)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/message/MessageModule.php (69)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/views/layouts/main.php (66)
+2014/09/29 00:30:07 [trace] [system.CModule] Loading "db" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/message/models/Message.php (232)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/message/MessageModule.php (69)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/views/layouts/main.php (66)
+2014/09/29 00:30:07 [trace] [system.db.CDbConnection] Opening DB connection
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/message/models/Message.php (232)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/message/MessageModule.php (69)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/views/layouts/main.php (66)
+2014/09/29 00:30:07 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `messages`
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/message/models/Message.php (232)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/message/MessageModule.php (69)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/views/layouts/main.php (66)
+2014/09/29 00:30:07 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `messages`
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/message/models/Message.php (232)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/message/MessageModule.php (69)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/views/layouts/main.php (66)
+2014/09/29 00:30:07 [trace] [system.db.CDbCommand] Querying SQL: SELECT COUNT(*) FROM `messages` `t` WHERE ((t.receiver_id = :receiverId) AND (t.deleted_by <> :deleted_by_receiver OR t.deleted_by IS NULL)) AND (t.is_read = "0")
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/message/models/Message.php (232)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/message/MessageModule.php (69)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/views/layouts/main.php (66)
+2014/09/29 00:30:07 [trace] [system.CModule] Loading "coreMessages" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/views/layouts/main.php (77)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/views/layouts/column1.php (6)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (28)
+2014/09/29 00:30:07 [trace] [system.CModule] Loading "clientScript" application component
+in /Applications/MAMP/htdocs/yii/motocarmaR5/protected/modules/user/controllers/LoginController.php (28)
+in /Applications/MAMP/htdocs/yii/motocarmaR5/index.php (13)
