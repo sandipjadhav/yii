@@ -1,0 +1,6 @@
+INDEX VERSION 1.122+/Applications/MAMP/htdocs/yii/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+3926397998.index
+1534423352.index
+2866506494.index
+3922237875.index
+2886684692.index

@@ -1,0 +1,3 @@
+2014/09/25 06:50:15 [info] [application.controllers.SiteController] Successful login of user: 1
+in /Applications/MAMP/htdocs/yii/motocarmaR4/protected/controllers/SiteController.php (98)
+in /Applications/MAMP/htdocs/yii/motocarmaR4/index.php (13)

@@ -1,0 +1,5 @@
+#Sun Sep 28 15:57:41 PDT 2014
+org.eclipse.php.debug.core.xdebug_idekey=ECLIPSE_DBGP_172.16.1.6
+eclipse.preferences.version=1
+DefaultProjectBasePath=/yii/motocarmaR5
+org.eclipse.php.debug.core.pathMapper=<pathMappers><item1><mapper></mapper><server>Default PHP Web Server</server></item1></pathMappers>
