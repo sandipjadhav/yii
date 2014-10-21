@@ -19,25 +19,55 @@ class SiteController extends Controller {
             ),
         );
     }
-
     /**
      * This is the default 'index' action that is invoked
      * when an action is not explicitly requested by users.
      */
-    public function actionIndex() {
-        // renders the view file 'protected/views/site/index.php'
-        // using the default layout 'protected/views/layouts/main.php'
+    public function actionUserHome() {
+        $jsonStyle = Yii::app()->user->getState("guest_style");
+        //print_r($jsonStyle);
         $roles = Rights::getAssignedRoles(Yii::app()->user->Id);
-        if (count($roles) === 1) {
+        if (count($roles) === 1) { 
             $view = $this->getViewForRole(current($roles));
-            if ($view !== '') {
-                $this->render($view . '_index');
+            if ($view !== '') { 
+                    $guestStyleSelected = "";
+                    if($view == 'user' && $jsonStyle!=""){
+                        $guestStyleSelected = json_decode($jsonStyle);
+                    }
+                    $this->render($view . '_index', array('guestStyleSelected'=>$guestStyleSelected,'message'=>$_GET['message']));
+               
             } else {
                 $this->render('index');
             }
         } else {
             $this->render('index');
         }
+    }
+
+    /**
+     * This is the default 'index' action that is invoked
+     * when an action is not explicitly requested by users.
+     */
+    public function actionIndex() { 
+        // renders the view file 'protected/views/site/index.php'
+        // using the default layout 'protected/views/layouts/main.php'
+        $roles = Rights::getAssignedRoles(Yii::app()->user->Id);
+        if (count($roles) === 1) { 
+            $view = $this->getViewForRole(current($roles));
+            if ($view !== '') { 
+                if(current($roles)->name == 'Authenticated'){
+                    $this->render('index');
+                    //$this->render($view . '_index');
+                }else{
+                    $this->render($view . '_index');
+                }
+            } else {
+                $this->render('index');
+            }
+        } else {
+            $this->render('index');
+        }
+        //unset(Yii::app()->session['guest_style']);
     }
 
     // TODO SK: This won't work if there are multiple roles.

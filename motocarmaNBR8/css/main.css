@@ -231,3 +231,7 @@ div.search-form
 #img {
     width: 200px;
 }
+
+.dealPreview ul, .dealPreview ul li{
+    text-decoration: none; 
+}

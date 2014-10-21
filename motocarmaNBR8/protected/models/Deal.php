@@ -41,7 +41,7 @@ class Deal extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('ID, Dealership_ID, Car_ID, DealStatus_ID, SalesPerson_ID, User_ID', 'required'),
+			array('Dealership_ID, Car_ID, DealStatus_ID, SalesPerson_ID, User_ID, Price', 'required'),
 			array('ID, Dealership_ID, Car_ID, DealStatus_ID, SalesPerson_ID, User_ID', 'numerical', 'integerOnly'=>true),
 			array('Price', 'length', 'max'=>45),
 			array('DateAdded, LastModified', 'safe'),

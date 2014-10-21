@@ -34,7 +34,7 @@ class SavedCars extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('ID, Car_ID, User_ID', 'required'),
+			array('Car_ID, User_ID', 'required'),
 			array('ID, Car_ID, DealStatus_ID, User_ID, DateAdded', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
