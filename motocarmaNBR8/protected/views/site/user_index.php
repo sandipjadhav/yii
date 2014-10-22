@@ -5,17 +5,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
-// it will print whole json string, which you access after json_enocde in php
-if(isset($_POST['myData']))
-{
-$myData = json_decode($_POST['myData']);
-print_r($myData);
-}
 if (Yii::app()->user->isguest === false)
 {
+    if($message == 'dealSuccess'){
 ?>
+    <div class='flash-success'>
+        Your offer has been successfully submitted. The dealership will review the offer and will respond within 72 hours.
+    </div>
+    <?php } ?>
 User Home
 <ul>
         <!--TODO SK : Deals, dealership and sales persons need to be filtered by Dealership  -->
@@ -24,12 +21,23 @@ User Home
                 <li><?php echo CHtml::link('Saved Cars', array('savedcars/index')); ?></li>
             </ul>
 <?php
-
-$selectedcar = Yii::app()->session['$selectedcar'];
-echo Yii::app()->session['$selectedcar']['make'];
-echo Yii::app()->session['$selectedcar']['model'];
-echo Yii::app()->session['$selectedcar']['year'];
-echo Yii::app()->session['$selectedcar']['price'];
-//echo Yii::app()->session['$selectedcar'];
+if($guestStyleSelected && $guestStyleSelected != ""){ ?>
+<div id="CarInfo"><span><b>Recent Car Selected : </b></span>
+        <ul>
+            <li>Make: <span id="carName"><?php echo $guestStyleSelected->make->name ; ?></span></li>
+            <li>Model: <span id="carModel"><?php echo $guestStyleSelected->model->name ; ?></span></li>
+            <li>Year: <span id="carYear"><?php echo $guestStyleSelected->year->year ; ?></span></li>
+            <li>Price: <span id="carPrice"><?php echo $guestStyleSelected->price->baseMSRP ; ?></span></li>
+        </ul>       
+    </div>
+<?php 
+}else{    
+    $selectedcar = Yii::app()->session['$selectedcar'];
+    echo Yii::app()->session['$selectedcar']['make'];
+    echo Yii::app()->session['$selectedcar']['model'];
+    echo Yii::app()->session['$selectedcar']['year'];
+    echo Yii::app()->session['$selectedcar']['price'];
+    //echo Yii::app()->session['$selectedcar'];
+    }
 }
 ?>

@@ -20,6 +20,10 @@ $this->pageTitle = Yii::app()->name;
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-resource.min.js">
 </script>
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script>
+    var loginUrl = '<?php echo Yii::app()->createUrl('user/login'); ?>';
+    var dealUrl = '<?php echo Yii::app()->createUrl('deal/create'); ?>';
+    </script>
 </head>
 <body>
     <div ng-app='myApp'>
@@ -59,7 +63,7 @@ $this->pageTitle = Yii::app()->name;
                 <div>Trim: {{style.trim}}</div>
                 <div>Price: {{style.price.baseMSRP}}</div>
                 <span>
-                    <button class="btn" ng-click="selectThisCar()">Select</button>
+            <button class="btn" ng-click="selectThisCar(style)">Select</button>
             
         </span>
             </div>

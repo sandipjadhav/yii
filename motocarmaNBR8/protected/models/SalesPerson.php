@@ -5,6 +5,7 @@
  *
  * The followings are the available columns in table 'SalesPerson':
  * @property integer $ID
+ * @property string $Name
  * @property integer $Dealership_ID
  * @property integer $User_ID
  * @property string $ContactPhone
@@ -40,7 +41,8 @@ class SalesPerson extends CActiveRecord
 		return array(
 			array('ID, Dealership_ID, User_ID', 'required'),
 			array('ID, Dealership_ID, User_ID, Active', 'numerical', 'integerOnly'=>true),
-			array('ContactPhone, Email', 'length', 'max'=>45),
+			array('Name', 'max'=>20),
+                        array('ContactPhone, Email', 'length', 'max'=>45),
 			array('Description', 'length', 'max'=>500),
 			array('DateAdded, Photo', 'safe'),
 			// The following rule is used by search().
@@ -71,6 +73,7 @@ class SalesPerson extends CActiveRecord
 	{
 		return array(
 			'ID' => 'ID',
+                        'Name' => 'Name',
 			'Dealership_ID' => 'Dealership',
 			'User_ID' => 'User',
 			'ContactPhone' => 'Contact Phone',
@@ -101,6 +104,7 @@ class SalesPerson extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('ID',$this->ID);
+                $criteria->compare('Name',$this->Name);
 		$criteria->compare('Dealership_ID',$this->Dealership_ID);
 		$criteria->compare('User_ID',$this->User_ID);
 		$criteria->compare('ContactPhone',$this->ContactPhone,true);

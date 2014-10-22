@@ -146,11 +146,35 @@ function CarCtrl($http, $scope, VehicleService, VehiclePhotoService, PostService
                     $scope.myCars = value;
                 })
     };
-
+/*
  $scope.selectThisCar = function () { PostService.selectCar().then(function (value) {
                     console.log(value);
-                }); };
+     }); };
+*/
 
+$scope.selectThisCar = function (style) {
+        $scope.selectedCar = style;
+        console.log(JSON.stringify(style));
+        
+        // SK TODO : This doesn't work.
+        // POST the selected car to the user's page so that it can be captured and saved to the database.
+        $http({
+            url: 'index.php?r=ajax/selectcar',
+            method: "POST",
+            data: JSON.stringify(style),
+            headers: {'Content-Type': 'application/json'}
+        }).success(function (data, status, headers, config) {
+            //$scope.selectedCar = style; // assign  $scope.persons here as promise is resolved here 
+            if(data.url == 'login'){
+                window.location.href = loginUrl; 
+            }else if(data.url == 'dealer'){
+                window.location.href = dealUrl;
+            }
+        }).error(function (data, status, headers, config) {
+            $scope.status = status + ' ' + headers;
+            console.log('failed');
+        });
+    };
     /*//var method = 'POST';
      //var url = 'index.php?r=user/login';
      //$scope.codeStatus = "";
@@ -187,14 +211,14 @@ function CarCtrl($http, $scope, VehicleService, VehiclePhotoService, PostService
         
         $http({
      url: 'http://localhost:8888/yii/motocarmaNBR8/index.php?r=user/profile',
-     method: "POST",
+            method: "POST",
      data: {msg:'hello world!'},
      }).success(function () {
-     //$scope.selectedCar = style; // assign  $scope.persons here as promise is resolved here 
+            //$scope.selectedCar = style; // assign  $scope.persons here as promise is resolved here 
      console.log('passed');
      }).error(function () {
-     console.log('failed');
-     });
+            console.log('failed');
+        });
      //$http.post();
         location.href = "index.php?r=user/login";
     };*/
@@ -269,12 +293,12 @@ function CarCtrl($http, $scope, VehicleService, VehiclePhotoService, PostService
      console.log('failed');
      alert('No access available.');
      });
-     };
+    };
      $scope.fetch();*/
 
 
 
-// SK TODO : Doesn't work.
+    // SK TODO : Doesn't work.
     $scope.clear = function () {
         $scope.results.innerHTML = "";
     };

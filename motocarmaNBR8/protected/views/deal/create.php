@@ -7,6 +7,7 @@ $this->breadcrumbs=array(
 	'Create',
 );
 
+if($currentRole != 'Authenticated'){
 $this->menu=array(
 	array('label'=>'List Deal', 'url'=>array('index')),
 	array('label'=>'Manage Deal', 'url'=>array('admin')),
@@ -15,4 +16,10 @@ $this->menu=array(
 
 <h1>Create Deal</h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php 
+
+    $this->renderPartial('_form', array('model'=>$model)); 
+}else{
+    $this->renderPartial('_dealWizard', array('model'=>$model,'arrCarInfo'=>$arrCarInfo));
+}
+?>

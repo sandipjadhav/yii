@@ -44,7 +44,7 @@ class DealHistory extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('ID, Deal_ID', 'required'),
+			array('Deal_ID', 'required'),
 			array('ID, Car_ID, Deal_ID, DealStatus_ID, SalesPerson_ID, User_ID', 'numerical', 'integerOnly'=>true),
 			array('DealStatus, Make, Model, Price, SalesPersonUserName, StyleID, Year, UserName', 'length', 'max'=>45),
 			// The following rule is used by search().
