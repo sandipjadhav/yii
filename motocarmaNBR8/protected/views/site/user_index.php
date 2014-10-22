@@ -7,7 +7,7 @@
  */
 if (Yii::app()->user->isguest === false)
 {
-    if($message == 'dealSuccess'){
+    if(isset($message) && $message == 'dealSuccess'){
 ?>
     <div class='flash-success'>
         Your offer has been successfully submitted. The dealership will review the offer and will respond within 72 hours.
