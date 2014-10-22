@@ -34,8 +34,11 @@ class SiteController extends Controller {
                     if($view == 'user' && $jsonStyle!=""){
                         $guestStyleSelected = json_decode($jsonStyle);
                     }
-                    $this->render($view . '_index', array('guestStyleSelected'=>$guestStyleSelected,'message'=>$_GET['message']));
-               
+                    if(isset($_GET['message']) && $_GET['message'] !=''){
+                        $this->render($view . '_index', array('guestStyleSelected'=>$guestStyleSelected,'message'=>$_GET['message']));
+                    }else{
+                        $this->render($view . '_index', array('guestStyleSelected'=>$guestStyleSelected));
+                    }
             } else {
                 $this->render('index');
             }
