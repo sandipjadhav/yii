@@ -34,7 +34,14 @@ print_r($myData);
 <tr>
 	<th class="label"><?php echo CHtml::encode(UserModule::t($field->title)); ?>
 </th>
-    <td><?php echo (($field->widgetView($profile))?$field->widgetView($profile):CHtml::encode((($field->range)?Profile::range($field->range,$profile->getAttribute($field->varname)):$profile->getAttribute($field->varname)))); ?>
+    <td><?php 
+        if($field->varname == 'profilePhoto'){
+            $photo = Yii::app()->baseUrl.'/'.$profile->getAttribute('profilePhoto');
+            echo '<img src="'.$photo.'" width="50" height="50" style=""/>';
+        }else{
+            echo (($field->widgetView($profile))?$field->widgetView($profile):CHtml::encode((($field->range)?Profile::range($field->range,$profile->getAttribute($field->varname)):$profile->getAttribute($field->varname)))); 
+        }
+        ?>
 </td>
 </tr>
 			<?php
