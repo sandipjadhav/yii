@@ -64,26 +64,49 @@ class SalesPersonController extends Controller
 	{
 		$model=new SalesPerson;
                 $user = new User;
+                $profile=new Profile;
+                $profile->regMode = true;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['SalesPerson']))
 		{
+                    try{
 			$model->attributes=$_POST['SalesPerson'];
 			$user->attributes=$_POST['User'];
-                        if($user->validate() && $model->validate()){
+                        $profile->attributes=((isset($_POST['Profile'])?$_POST['Profile']:array()));
+                        if($user->validate() && $model->validate() && $profile->validate()){
+                            $transaction = Yii::app()->db->beginTransaction();
                             if($user->save(false)){
-                                $model->User_ID = $user->id;
+                                
+                                $profile->user_id=$user->id;
+                                if($profile->save()){
+                                    $model->User_ID = $user->id;
                                     if($model->save()){
-                                        $this->redirect(array('view','id'=>$model->ID));
+                                        
+                                    }else{
+                                        $transaction->rollback();
                                     }
+                                }else{
+                                    $transaction->rollback();
+                                }
+                                
+                            }else{
+                                $transaction->rollback();
                             }
+                            $transaction->commit();
+                            $this->redirect(array('view','id'=>$model->ID));
                         }
+                    }catch(Exception $e){
+                            $transaction->rollBack();
+                            throw new CHttpException(null,"Error while saving Sales Person :  ".$e->getMessage());
+                    }
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
-                        'user'=>$user
+                        'user'=>$user,
+                        'profile' => $profile
 		));
 	}
 
@@ -108,7 +131,7 @@ class SalesPersonController extends Controller
 		}
 
 		$this->render('update',array(
-			'model'=>$model,'user'=>$user
+			'model'=>$model,'user'=>$user, 'profile'=>null
 		));
 	}
 

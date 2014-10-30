@@ -84,7 +84,7 @@ class SiteController extends Controller {
             case "dealer":
                 $view = "dealer";
                 break;
-            case "Salesperson":
+            case "salesperson":
                 $view = "salesperson";
                 break;
             case "Authenticated":

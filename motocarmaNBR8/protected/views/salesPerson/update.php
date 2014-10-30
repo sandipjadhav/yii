@@ -18,4 +18,4 @@ $this->menu=array(
 
 <h1>Update SalesPerson <?php echo $model->ID; ?></h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model,'user'=>$user)); ?>
+<?php $this->renderPartial('_form', array('model'=>$model,'user'=>$user,'profile'=>$profile)); ?>

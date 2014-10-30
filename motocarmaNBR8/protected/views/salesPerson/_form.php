@@ -35,17 +35,51 @@
             <?php echo $form->dropDownList($model,'Dealership_ID', $model->getAllDealerships()); ?>
                 <?php echo $form->error($model,'Dealership_ID'); ?>
 	</div>
+        <?php if($user){?>
+        <div class="row">
+		<?php echo $form->labelEx($profile,'firstname'); ?>
+		<?php echo $form->textField($profile,'firstname',array('size'=>60,'maxlength'=>128)); ?>
+		<?php echo $form->error($profile,'firstname'); ?>
+	</div>
         
-	<div class="row">
-		<?php echo $form->labelEx($model,'ContactPhone'); ?>
-		<?php echo $form->textField($model,'ContactPhone',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'ContactPhone'); ?>
+        
+        <div class="row">
+		<?php echo $form->labelEx($profile,'lastname'); ?>
+		<?php echo $form->textField($profile,'lastname',array('size'=>60,'maxlength'=>128)); ?>
+		<?php echo $form->error($profile,'lastname'); ?>
+	</div>
+        
+        <div class="row">
+		<?php echo $form->labelEx($profile,'birthday'); ?>
+		<?php echo $form->textField($profile,'birthday',array('size'=>60,'maxlength'=>128)); ?>
+		<?php echo $form->error($profile,'birthday'); ?>
+	</div>
+        <?php } ?>
+        <?php if($user){?>
+        <div class="row">
+		<?php echo $form->labelEx($user,'username'); ?>
+		<?php echo $form->textField($user,'username',array('size'=>60,'maxlength'=>128)); ?>
+		<?php echo $form->error($user,'username'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'Email'); ?>
-		<?php echo $form->textField($model,'Email',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'Email'); ?>
+		<?php echo $form->labelEx($user,'password'); ?>
+		<?php echo $form->passwordField($user,'password',array('size'=>60,'maxlength'=>128)); ?>
+		<?php echo $form->error($user,'password'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($user,'email'); ?>
+		<?php echo $form->textField($user,'email',array('size'=>60,'maxlength'=>128)); ?>
+		<?php echo $form->error($user,'email'); ?>
+	</div>
+        
+        <?php } ?>
+        
+        <div class="row">
+		<?php echo $form->labelEx($model,'ContactPhone'); ?>
+		<?php echo $form->textField($model,'ContactPhone',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->error($model,'ContactPhone'); ?>
 	</div>
 
 	<div class="row">
@@ -66,31 +100,6 @@
 		<?php echo $form->error($model,'Active'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'Photo'); ?>
-		<?php echo $form->textField($model,'Photo'); ?>
-		<?php echo $form->error($model,'Photo'); ?>
-	</div>
-        <?php if($user){?>
-        <div class="row">
-		<?php echo $form->labelEx($user,'username'); ?>
-		<?php echo $form->textField($user,'username',array('size'=>60,'maxlength'=>128)); ?>
-		<?php echo $form->error($user,'username'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($user,'password'); ?>
-		<?php echo $form->passwordField($user,'password',array('size'=>60,'maxlength'=>128)); ?>
-		<?php echo $form->error($user,'password'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($user,'email'); ?>
-		<?php echo $form->textField($user,'email',array('size'=>60,'maxlength'=>128)); ?>
-		<?php echo $form->error($user,'email'); ?>
-	</div>
-        <?php } ?>
-        
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>
