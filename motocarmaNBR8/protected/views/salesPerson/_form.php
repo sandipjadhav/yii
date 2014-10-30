@@ -27,12 +27,8 @@
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'ID'); ?>
-		<?php echo $form->textField($model,'ID'); ?>
-		<?php echo $form->error($model,'ID'); ?>
-	</div>
+        <?php echo $form->hiddenField($model,'User_ID'); ?>
+        <?php echo $form->hiddenField($model,'ID'); ?>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Dealership_ID'); ?>
@@ -40,12 +36,6 @@
                 <?php echo $form->error($model,'Dealership_ID'); ?>
 	</div>
         
-	<div class="row">
-		<?php echo $form->labelEx($model,'User_ID'); ?>
-		 <?php echo $form->dropDownList($model,'User_ID', $model->getAllUsers()); ?>
-                <?php echo $form->error($model,'User_ID'); ?>
-	</div>
-
 	<div class="row">
 		<?php echo $form->labelEx($model,'ContactPhone'); ?>
 		<?php echo $form->textField($model,'ContactPhone',array('size'=>45,'maxlength'=>45)); ?>
@@ -81,7 +71,26 @@
 		<?php echo $form->textField($model,'Photo'); ?>
 		<?php echo $form->error($model,'Photo'); ?>
 	</div>
+        <?php if($user){?>
+        <div class="row">
+		<?php echo $form->labelEx($user,'username'); ?>
+		<?php echo $form->textField($user,'username',array('size'=>60,'maxlength'=>128)); ?>
+		<?php echo $form->error($user,'username'); ?>
+	</div>
 
+	<div class="row">
+		<?php echo $form->labelEx($user,'password'); ?>
+		<?php echo $form->passwordField($user,'password',array('size'=>60,'maxlength'=>128)); ?>
+		<?php echo $form->error($user,'password'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($user,'email'); ?>
+		<?php echo $form->textField($user,'email',array('size'=>60,'maxlength'=>128)); ?>
+		<?php echo $form->error($user,'email'); ?>
+	</div>
+        <?php } ?>
+        
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>
