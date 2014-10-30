@@ -19,7 +19,7 @@ $this->menu=array(
 <h1>Update Deal <?php echo $model->ID; ?></h1>
 
 <?php
-if($currentRole == 'Salesperson' || $currentRole == 'dealer' ){
+if($currentRole == 'salesperson' || $currentRole == 'dealer' ){
     $this->renderPartial('_processDeal', array('model'=>$model));
 }else{
     $this->renderPartial('_form', array('model'=>$model)); 
