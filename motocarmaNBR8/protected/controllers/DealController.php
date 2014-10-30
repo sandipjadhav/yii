@@ -170,16 +170,69 @@ class DealController extends Controller
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
+                
 		if(isset($_POST['Deal']))
 		{
 			$model->attributes=$_POST['Deal'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->ID));
-		}
+			if($model->save()){
+                                if(isset($_POST['Deal']['Update_Purpose']) 
+                                    && $_POST['Deal']['Update_Purpose']=='process'
+                                    && !in_array($model->DealStatus_ID, array(3,4))){
+                                
+                                $dealStatus = DealStatus::model()->findByPk($model->DealStatus_ID);
+                                
+                                $salesperson = SalesPerson::model()->findByPk($model->SalesPerson_ID);
+                                
+                                $customer = User::model()->findByPk($model->User_ID);
+                                
+                                $user = User::model()->findByPk(Yii::app()->user->Id);
+                                
+                                $car = Car::model()->findByPk($model->Car_ID);
+                                
+                                Yii::import('application.modules.message.models.*');
+                                $message = new Message;
+                                $message->sender_id = Yii::app()->user->Id; 
+                                $message->receiver_id = $model->User_ID; 
+                                $message->subject = 'Motocarma Offer Notification - Offer '.$dealStatus->DealStatus;
+                                $body =     "Dear ".$customer->username.",";
+                                $body .=    "\n Your offer with status mentioned below is ".$dealStatus->DealStatus;
+                                $body .=    "\n Offer Details:";
+                                $body .=    "Customer: ".$user->username."\n ";
+                                $body .=    "Make: ".$car->Make."\n ";
+                                $body .=    "Model: ".$car->Model."\n ";
+                                $body .=    "Price: ".$model->Price."\n ";
+                                $body .=    "Year: ".$car->Year."\n ";
+                                $message->body = $body; 
+                                $message->created_at = date("Y-m-d h:i:s"); 
+                                $message->save();
+                                
+                                
+                                $DealHistory = new DealHistory;
+                                $DealHistory->Car_ID = $model->Car_ID;
+                                $DealHistory->Deal_ID = $model->ID;
+                                $DealHistory->DealStatus_ID = $model->DealStatus_ID;
+                                $DealHistory->DealStatus  = $dealStatus->DealStatus;
+                                $DealHistory->Make = $car->Make;
+                                $DealHistory->Model = $car->Model;
+                                $DealHistory->Price = $model->Price;
+                                $DealHistory->SalesPersonUserName = $salesperson->Name;
+                                $DealHistory->SalesPerson_ID = $model->SalesPerson_ID;
+                                $DealHistory->StyleID = $car->StyleID;
+                                $DealHistory->UserName =  $user->username;
+                                $DealHistory->User_ID = Yii::app()->user->Id;
+                                $DealHistory->Year = $car->Year;
 
+                                $DealHistory->save();
+                                
+                            }
+                            $this->redirect(array('view','id'=>$model->ID));
+                        }
+		}
+                
+                $roles = Rights::getAssignedRoles(Yii::app()->user->Id);
+                $role = current($roles);
 		$this->render('update',array(
-			'model'=>$model,
+			'model'=>$model,'currentRole'=>$role->name
 		));
 	}
 
@@ -201,12 +254,28 @@ class DealController extends Controller
 	 * Lists all models.
 	 */
 	public function actionIndex()
-	{
+	{ 
+            $roles = Rights::getAssignedRoles(Yii::app()->user->Id); 
+            $criteria = array();
+            if (count($roles) === 1) { 
+                $role = current($roles);
+                if($role->name == 'dealer'){
+                    $dealership=  Dealership::model()->findByAttributes(array('User_ID'=>Yii::app()->user->Id));
+                    $criteria = array(
+                                'condition'=>'Dealership_ID='.$dealership->ID,
+                                'with'=>array('salesPerson'=>array('select'=>'Name'))
+                                );
+                }elseif($role->name == 'Salesperson'){
+                    $salesperson= SalesPerson::model()->findByAttributes(array('User_ID'=>Yii::app()->user->Id));
+                    $criteria = array(
+                                'condition'=>'SalesPerson_ID='.$salesperson->ID,
+                                'with'=>array('salesPerson'=>array('select'=>'Name'))
+                                );
+                }
+            }
 		$dataProvider=new CActiveDataProvider('Deal',
                         array(
-                                'criteria'=>array(
-                                'condition'=>'Dealership_ID=1'
-                                )
+                                'criteria'=> $criteria
                             )
                         );
 		$this->render('index',array(
