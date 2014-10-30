@@ -37,7 +37,7 @@ class SiteController extends Controller {
                     if(isset($_GET['message']) && $_GET['message'] !=''){
                         $this->render($view . '_index', array('guestStyleSelected'=>$guestStyleSelected,'message'=>$_GET['message']));
                     }else{
-                        $this->render($view . '_index', array('guestStyleSelected'=>$guestStyleSelected));
+                    $this->render($view . '_index', array('guestStyleSelected'=>$guestStyleSelected));
                     }
             } else {
                 $this->render('index');
@@ -75,7 +75,7 @@ class SiteController extends Controller {
 
     // TODO SK: This won't work if there are multiple roles.
     protected function getViewForRole($role) {
-        $view = "";
+        $view = ""; 
         // $roles = Yii::app()->user->getState('roles'); //however you define your role, have the value output to this variable
         switch ($role->name) {
             case "admin":
@@ -84,7 +84,7 @@ class SiteController extends Controller {
             case "dealer":
                 $view = "dealer";
                 break;
-            case "salesperson":
+            case "Salesperson":
                 $view = "salesperson";
                 break;
             case "Authenticated":
