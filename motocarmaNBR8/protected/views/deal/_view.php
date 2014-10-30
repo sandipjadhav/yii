@@ -22,7 +22,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('SalesPerson_ID')); ?>:</b>
-	<?php echo CHtml::encode($data->SalesPerson_ID); ?>
+	<?php echo CHtml::encode($data->salesPerson->Name); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('User_ID')); ?>:</b>
