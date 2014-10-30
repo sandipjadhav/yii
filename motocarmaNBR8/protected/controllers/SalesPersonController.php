@@ -63,19 +63,27 @@ class SalesPersonController extends Controller
 	public function actionCreate()
 	{
 		$model=new SalesPerson;
-
+                $user = new User;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['SalesPerson']))
 		{
 			$model->attributes=$_POST['SalesPerson'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->ID));
+			$user->attributes=$_POST['User'];
+                        if($user->validate() && $model->validate()){
+                            if($user->save(false)){
+                                $model->User_ID = $user->id;
+                                    if($model->save()){
+                                        $this->redirect(array('view','id'=>$model->ID));
+                                    }
+                            }
+                        }
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
+                        'user'=>$user
 		));
 	}
 
@@ -87,10 +95,11 @@ class SalesPersonController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
+                //$user = $model->user;
+                $user = null;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
+                
 		if(isset($_POST['SalesPerson']))
 		{
 			$model->attributes=$_POST['SalesPerson'];
@@ -99,7 +108,7 @@ class SalesPersonController extends Controller
 		}
 
 		$this->render('update',array(
-			'model'=>$model,
+			'model'=>$model,'user'=>$user
 		));
 	}
 
@@ -122,7 +131,19 @@ class SalesPersonController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('SalesPerson');
+            $roles = Rights::getAssignedRoles(Yii::app()->user->Id); 
+            $criteria = array();
+            if (count($roles) === 1) { 
+                $role = current($roles);
+                if($role->name == 'dealer'){
+                    $dealership=  Dealership::model()->findByAttributes(array('User_ID'=>Yii::app()->user->Id));
+                    $criteria = array(
+                                'condition'=>'Dealership_ID='.$dealership->ID
+                                );
+                }
+            }
+		$dataProvider=new CActiveDataProvider('SalesPerson',
+                                array('criteria'=> $criteria));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
