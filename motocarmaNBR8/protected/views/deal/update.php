@@ -14,11 +14,11 @@ $this->menu=array(
 	array('label'=>'View Deal', 'url'=>array('view', 'id'=>$model->ID)),
 	array('label'=>'Manage Deal', 'url'=>array('admin')),
 );
-?>
+?> 
 
 <h1>Update Deal <?php echo $model->ID; ?></h1>
 
-<?php
+<?php 
 if($currentRole == 'salesperson' || $currentRole == 'dealer' ){
     $this->renderPartial('_processDeal', array('model'=>$model));
 }else{
