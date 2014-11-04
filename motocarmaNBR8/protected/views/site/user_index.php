@@ -30,6 +30,7 @@ if($guestStyleSelected && $guestStyleSelected != ""){ ?>
             <li>Price: <span id="carPrice"><?php echo $guestStyleSelected->price->baseMSRP ; ?></span></li>
         </ul>       
     </div>
+<?php echo CHtml::link('Make an offer', array('deal/create')); ?>
 <?php 
 }else{    
     $selectedcar = Yii::app()->session['$selectedcar'];
