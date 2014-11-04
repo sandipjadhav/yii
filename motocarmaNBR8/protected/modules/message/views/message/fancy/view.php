@@ -42,7 +42,7 @@
 			</tr>
 			<tr>
 				<td colspan="3">
-					<?php echo CHtml::encode($viewedMessage->body) ?>
+					<?php echo nl2br($viewedMessage->body) ?>
 				</td>
 			</tr>
 		</table>
