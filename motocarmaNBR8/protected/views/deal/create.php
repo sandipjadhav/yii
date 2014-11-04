@@ -6,7 +6,8 @@ $this->breadcrumbs=array(
 	'Deals'=>array('index'),
 	'Create',
 );
-
+$dateFields = array("input[name*='DateAdded']", "input[name*='LastModified']");
+Yii::app()->customUtility->addJqueryDatePicker($dateFields);
 if($currentRole != 'Authenticated'){
 $this->menu=array(
 	array('label'=>'List Deal', 'url'=>array('index')),
