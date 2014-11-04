@@ -4,7 +4,7 @@
 <?php
 	$this->breadcrumbs = array(
 		MessageModule::t("Messages"),
-		($isIncomeMessage ? MessageModule::t("Inbox") : MessageModule::t("Sent")) => ($isIncomeMessage ? 'inbox' : 'sent'),
+		($isIncomeMessage ? MessageModule::t("Inbox") : MessageModule::t("Sent")) => ($isIncomeMessage ? 'index.php?r=message/inbox' : 'index.php?r=message/sent'),
 		CHtml::encode($viewedMessage->subject),
 	);
 ?>
