@@ -77,66 +77,72 @@ class DealController extends Controller
 		if(isset($_POST['Deal']))
 		{       
                     $submitData = $_POST['Deal'];
-                    if($submitData['Car_ID'] == ''){
-                        $arrCarInfo = $this->getCarDetailsForPreviewPage();
-                        $car=new Car;
-                        $car->Make = $arrCarInfo['Make'];
-                        $car->Price = $arrCarInfo['Price'];
-                        $car->Model = $arrCarInfo['Model'];
-                        $car->StyleID = $arrCarInfo['StyleID'];
-                        $car->Year = $arrCarInfo['Year'];
-                        $car->ID = NULL;
-                        
-                        if($car->save()){
-                            $submitData['Car_ID'] = $car->ID;
-                            $submitData['ID'] = NULL;
-                            $model->attributes=$submitData;
+                    
+                    $offerExists = $this->isOfferExistsWithDealer(Yii::app()->user->Id, $submitData['Dealership_ID']);
+                    if($offerExists === FALSE){
+                        if($submitData['Car_ID'] == ''){
+                            $arrCarInfo = $this->getCarDetailsForPreviewPage();
+                            $car=new Car;
+                            $car->Make = $arrCarInfo['Make'];
+                            $car->Price = $arrCarInfo['Price'];
+                            $car->Model = $arrCarInfo['Model'];
+                            $car->StyleID = $arrCarInfo['StyleID'];
+                            $car->Year = $arrCarInfo['Year'];
+                            $car->ID = NULL;
+
+                            if($car->save()){
+                                $submitData['Car_ID'] = $car->ID;
+                                $submitData['ID'] = NULL;
+                                $model->attributes=$submitData;
+                            }
+                        }else{
+                            $model->attributes=$_POST['Deal'];
+                        }
+                        if($model->save()){
+
+                            $salesperson = SalesPerson::model()->findByPk($model->SalesPerson_ID);
+                            $user = User::model()->findByPk(Yii::app()->user->Id);
+
+                            Yii::import('application.modules.message.models.*');
+                            $message = new Message;
+                            $message->sender_id = Yii::app()->user->Id; 
+                            $message->receiver_id = $salesperson->User_ID; 
+                            $message->subject = 'New Offer Notification';
+                            $body =     'Dear, '.$salesperson->Name;
+                            $body .=    '<br/> Offer Details:';
+                            $body .=    "Customer: ".$user->username."<br/>";
+                            $body .=    "Make: ".$arrCarInfo['Make']."<br/>";
+                            $body .=    "Model: ".$arrCarInfo['Model']."<br/>";
+                            $body .=    "Price: ".$arrCarInfo['Price']."<br/>";
+                            $body .=    "Year: ".$arrCarInfo['Year']."<br/>";
+                            $message->body = $body; 
+                            $message->created_at = date("Y-m-d h:i:s"); 
+                            $message->save();
+
+                            $dealStatus = DealStatus::model()->findByPk($model->DealStatus_ID);
+
+
+                            $DealHistory = new DealHistory;
+                            $DealHistory->Car_ID = $model->Car_ID;
+                            $DealHistory->Deal_ID = $model->ID;
+                            $DealHistory->DealStatus_ID = $model->DealStatus_ID;
+                            $DealHistory->DealStatus  = $dealStatus->DealStatus;
+                            $DealHistory->Make = $arrCarInfo['Make'];
+                            $DealHistory->Model = $arrCarInfo['Model'];
+                            $DealHistory->Price = $arrCarInfo['Price'];
+                            $DealHistory->SalesPersonUserName = $salesperson->Name;
+                            $DealHistory->SalesPerson_ID = $model->SalesPerson_ID;
+                            $DealHistory->StyleID = $arrCarInfo['StyleID'];
+                            $DealHistory->UserName =  $user->username;
+                            $DealHistory->User_ID = Yii::app()->user->Id;
+                            $DealHistory->Year = $arrCarInfo['Year'];
+
+                            $DealHistory->save();
+
+                            $this->redirect(array('site/UserHome','message'=>'dealSuccess'));
                         }
                     }else{
-                        $model->attributes=$_POST['Deal'];
-                    }
-                    if($model->save()){
-                        
-                        $salesperson = SalesPerson::model()->findByPk($model->SalesPerson_ID);
-                        $user = User::model()->findByPk(Yii::app()->user->Id);
-                       
-                        Yii::import('application.modules.message.models.*');
-                        $message = new Message;
-                        $message->sender_id = Yii::app()->user->Id; 
-                        $message->receiver_id = $salesperson->User_ID; 
-                        $message->subject = 'New Offer Notification';
-                        $body =     'Dear, '.$salesperson->Name;
-                        $body .=    '<br/> Offer Details:';
-                        $body .=    "Customer: ".$user->username."<br/>";
-                        $body .=    "Make: ".$arrCarInfo['Make']."<br/>";
-                        $body .=    "Model: ".$arrCarInfo['Model']."<br/>";
-                        $body .=    "Price: ".$arrCarInfo['Price']."<br/>";
-                        $body .=    "Year: ".$arrCarInfo['Year']."<br/>";
-                        $message->body = $body; 
-                        $message->created_at = date("Y-m-d h:i:s"); 
-                        $message->save();
-                        
-                        $dealStatus = DealStatus::model()->findByPk($model->DealStatus_ID);
-                        
-                        
-                        $DealHistory = new DealHistory;
-                        $DealHistory->Car_ID = $model->Car_ID;
-                        $DealHistory->Deal_ID = $model->ID;
-                        $DealHistory->DealStatus_ID = $model->DealStatus_ID;
-                        $DealHistory->DealStatus  = $dealStatus->DealStatus;
-                        $DealHistory->Make = $arrCarInfo['Make'];
-                        $DealHistory->Model = $arrCarInfo['Model'];
-                        $DealHistory->Price = $arrCarInfo['Price'];
-                        $DealHistory->SalesPersonUserName = $salesperson->Name;
-                        $DealHistory->SalesPerson_ID = $model->SalesPerson_ID;
-                        $DealHistory->StyleID = $arrCarInfo['StyleID'];
-                        $DealHistory->UserName =  $user->username;
-                        $DealHistory->User_ID = Yii::app()->user->Id;
-                        $DealHistory->Year = $arrCarInfo['Year'];
-                        
-                        $DealHistory->save();
-                        
-                        $this->redirect(array('site/UserHome','message'=>'dealSuccess'));
+                        Yii::app()->user->setFlash('error', "You have already made an offer to the dealer selected. Please select another dealer.");
                     }
 		}
                 
@@ -340,4 +346,11 @@ class DealController extends Controller
             
             return $carInfo;
         }
+        
+      private function isOfferExistsWithDealer($userId, $dealerId){
+         $deals =  Deal::model()->findAllByAttributes(array("User_ID"=>$userId,"Dealership_ID"=>$dealerId));
+         
+         return (count($deals)>0 ? true : false);
+         
+      }
 }
