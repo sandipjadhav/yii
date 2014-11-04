@@ -137,6 +137,9 @@ return array(
 				),
 			),
 		),
+            'customUtility'=>array(
+                                    'class'=>'CustomUtility'
+                                ),
 	),
 
 	// application-level parameters that can be accessed
