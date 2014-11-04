@@ -137,7 +137,23 @@ class DealHistory extends CActiveRecord
             $list = CHtml::listdata($model,'ID','Make');
             return $list;
         }
-
+        
+         // Get Deal statsus
+        public function getAllDealStatus()
+        { 
+            $model = DealStatus::model()->findAll(array('order'=>'DealStatus'));
+            $list = CHtml::listdata($model,'ID','DealStatus');
+            return $list;
+        }
+        
+        // Get Users
+        public function getAllUsers()
+        {
+            $model = User::model()->findAll(array('order'=>'username'));
+            $list = CHtml::listdata($model,'id','username');
+            return $list;
+        }
+        
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
