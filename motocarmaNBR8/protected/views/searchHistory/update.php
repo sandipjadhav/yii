@@ -7,7 +7,8 @@ $this->breadcrumbs=array(
 	$model->ID=>array('view','id'=>$model->ID),
 	'Update',
 );
-
+$dateFields = array("input[name*='DateAdded']");
+Yii::app()->customUtility->addJqueryDatePicker($dateFields);
 $this->menu=array(
 	array('label'=>'List SearchHistory', 'url'=>array('index')),
 	array('label'=>'Create SearchHistory', 'url'=>array('create')),
