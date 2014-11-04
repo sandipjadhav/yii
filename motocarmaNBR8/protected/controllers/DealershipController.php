@@ -63,7 +63,7 @@ class DealershipController extends Controller
 	public function actionCreate()
 	{
 		$model=new Dealership;
-
+                
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -122,7 +122,22 @@ class DealershipController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Dealership');
+            $roles = Rights::getAssignedRoles(Yii::app()->user->Id); 
+            $criteria = array();
+            if (count($roles) === 1) { 
+                $role = current($roles);
+                if($role->name == 'dealer'){
+                    $dealership=  Dealership::model()->findByAttributes(array('User_ID'=>Yii::app()->user->Id));
+                    $criteria = array(
+                                'condition'=>'ID='.$dealership->ID,
+                                );
+                }
+            }
+            $dataProvider=new CActiveDataProvider('Dealership',
+                array(
+                        'criteria'=> $criteria
+                    )
+                );
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));

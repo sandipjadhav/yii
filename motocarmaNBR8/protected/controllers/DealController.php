@@ -142,20 +142,14 @@ class DealController extends Controller
                 
                 $arrCarInfo = $this->getCarDetailsForPreviewPage();
                 
-                if(!empty($arrCarInfo)){
-                    
-                    $roles = Rights::getAssignedRoles(Yii::app()->user->Id);
-                    $model->DealStatus_ID = 3;
-                    $model->User_ID = Yii::app()->user->Id;
-                    $model->DateAdded = $model->LastModified = date("Y-m-d h:i:s");
-
-
-
-                    $this->render('create',array(
-                            'model'=>$model,'currentRole'=>current($roles)->name,
-                            'arrCarInfo'=>$arrCarInfo
-                    ));
-                }
+                $roles = Rights::getAssignedRoles(Yii::app()->user->Id);
+                $model->DealStatus_ID = 3;
+                $model->User_ID = Yii::app()->user->Id;
+                $model->DateAdded = $model->LastModified = date("Y-m-d h:i:s");
+                $this->render('create',array(
+                        'model'=>$model,'currentRole'=>current($roles)->name,
+                        'arrCarInfo'=>$arrCarInfo
+                ));
                 
 	}
 
@@ -262,10 +256,10 @@ class DealController extends Controller
                 if($role->name == 'dealer'){
                     $dealership=  Dealership::model()->findByAttributes(array('User_ID'=>Yii::app()->user->Id));
                     $criteria = array(
-                                'condition'=>'Dealership_ID='.$dealership->ID,
+                                'condition'=>'t.Dealership_ID='.$dealership->ID,
                                 'with'=>array('salesPerson'=>array('select'=>'Name'))
                                 );
-                }elseif($role->name == 'Salesperson'){
+                }elseif(strtolower($role->name) == 'salesperson'){
                     $salesperson= SalesPerson::model()->findByAttributes(array('User_ID'=>Yii::app()->user->Id));
                     $criteria = array(
                                 'condition'=>'SalesPerson_ID='.$salesperson->ID,
