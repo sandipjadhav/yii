@@ -24,20 +24,16 @@ class SiteController extends Controller {
      * when an action is not explicitly requested by users.
      */
     public function actionUserHome() {
-        $jsonStyle = Yii::app()->user->getState("guest_style");
-        //print_r($jsonStyle);
+        $guestStyleExists = Yii::app()->user->hasState("guest_style") ;
+        $arrCarInfo = $this->getCarDetailsForPreviewPage();
         $roles = Rights::getAssignedRoles(Yii::app()->user->Id);
         if (count($roles) === 1) { 
             $view = $this->getViewForRole(current($roles));
             if ($view !== '') { 
-                    $guestStyleSelected = "";
-                    if($view == 'user' && $jsonStyle!=""){
-                        $guestStyleSelected = json_decode($jsonStyle);
-                    }
                     if(isset($_GET['message']) && $_GET['message'] !=''){
-                        $this->render($view . '_index', array('guestStyleSelected'=>$guestStyleSelected,'message'=>$_GET['message']));
+                        $this->render($view . '_index', array('arrCarInfo'=>$arrCarInfo,'guestStyleExists'=>$guestStyleExists,'message'=>$_GET['message']));
                     }else{
-                    $this->render($view . '_index', array('guestStyleSelected'=>$guestStyleSelected));
+                    $this->render($view . '_index', array('arrCarInfo'=>$arrCarInfo,'$guestStyleExists'=>$guestStyleExists));
                     }
             } else {
                 $this->render('index');
@@ -173,5 +169,44 @@ class SiteController extends Controller {
         Yii::app()->user->logout();
         $this->redirect(Yii::app()->homeUrl);
     }
+    
+    private function getCarDetailsForPreviewPage(){
+            $carInfo = array();
+            if(Yii::app()->user->getState("guest_style")!=''){
+                //unset(Yii::app()->session['userid']);
+                
+                $jsonStyle = Yii::app()->user->getState("guest_style");
+
+                $objStyle = json_decode($jsonStyle);
+                $carInfo['Make'] = $objStyle->make->name;
+                $carInfo['Model'] = $objStyle->model->name;
+                $carInfo['Year'] = $objStyle->year->year;
+                $carInfo['Price'] = $objStyle->price->baseMSRP;
+                $carInfo['StyleID'] = $objStyle->id;
+            }else{
+                $userId = Yii::app()->user->Id;
+                $car =  Car::model()
+                        ->with(
+                                array(
+                                    'savedCars'=>array('joinType'=>'INNER JOIN',
+                                                      'condition'=> 'savedCars.User_ID ='. $userId,
+                                                      'order'=>'savedCars.ID DESC',
+                                                      'limit'=>'1'),
+                                    'deals'=> array('joinType'=>'INNER JOIN')
+                                    )
+                                )
+                        ->find();
+                
+                $carInfo['Make'] = $car['Make'];
+                $carInfo['Model'] = $car['Model'];
+                $carInfo['Year'] = $car['Year'];
+                $carInfo['Price'] = $car['Price'];
+                $carInfo['StyleID'] = $car['StyleID'];
+                
+         
+            }
+            
+            return $carInfo;
+        }
 
 }

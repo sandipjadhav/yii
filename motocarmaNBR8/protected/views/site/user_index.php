@@ -20,25 +20,23 @@ User Home
                 <li><?php echo CHtml::link('Deals', array('deal/index')); ?></li>
                 <li><?php echo CHtml::link('Saved Cars', array('savedcars/index')); ?></li>
             </ul>
+
+<ul>
+                <li>Recent Car Selected : 
+                    <div id="CarInfo">
+                        <ul>
+                            <li>Make: <span id="carName"><?php echo $arrCarInfo['Make'] ; ?></span></li>
+                            <li>Model: <span id="carModel"><?php echo $arrCarInfo['Model'] ; ?></span></li>
+                            <li>Year: <span id="carYear"><?php echo $arrCarInfo['Year'] ; ?></span></li>
+                            <li>Price: <span id="carPrice"><?php echo $arrCarInfo['Price'] ; ?></span></li>
+                        </ul>       
+                    </div>
+                </li>
+            </ul>
+
 <?php
-if($guestStyleSelected && $guestStyleSelected != ""){ ?>
-<div id="CarInfo"><span><b>Recent Car Selected : </b></span>
-        <ul>
-            <li>Make: <span id="carName"><?php echo $guestStyleSelected->make->name ; ?></span></li>
-            <li>Model: <span id="carModel"><?php echo $guestStyleSelected->model->name ; ?></span></li>
-            <li>Year: <span id="carYear"><?php echo $guestStyleSelected->year->year ; ?></span></li>
-            <li>Price: <span id="carPrice"><?php echo $guestStyleSelected->price->baseMSRP ; ?></span></li>
-        </ul>       
-    </div>
-<?php echo CHtml::link('Make an offer', array('deal/create')); ?>
-<?php 
-}else{    
-    $selectedcar = Yii::app()->session['$selectedcar'];
-    echo Yii::app()->session['$selectedcar']['make'];
-    echo Yii::app()->session['$selectedcar']['model'];
-    echo Yii::app()->session['$selectedcar']['year'];
-    echo Yii::app()->session['$selectedcar']['price'];
-    //echo Yii::app()->session['$selectedcar'];
+    if($guestStyleExists && $guestStyleExists !=''){
+        echo CHtml::link('Make an offer', array('deal/create'));
     }
 }
 ?>

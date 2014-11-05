@@ -138,7 +138,7 @@ class DealController extends Controller
                             $DealHistory->Year = $arrCarInfo['Year'];
 
                             $DealHistory->save();
-
+                            Yii::app()->user->setState("guest_style",'');
                             $this->redirect(array('site/UserHome','message'=>'dealSuccess'));
                         }
                     }else{
