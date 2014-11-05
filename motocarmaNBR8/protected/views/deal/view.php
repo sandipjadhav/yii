@@ -6,14 +6,21 @@ $this->breadcrumbs=array(
 	'Deals'=>array('index'),
 	$model->ID,
 );
-
-$this->menu=array(
-	array('label'=>'List Deal', 'url'=>array('index')),
-	array('label'=>'Create Deal', 'url'=>array('create')),
-	array('label'=>'Update Deal', 'url'=>array('update', 'id'=>$model->ID)),
-	array('label'=>'Delete Deal', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->ID),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Deal', 'url'=>array('admin')),
-);
+$roles = Rights::getAssignedRoles(Yii::app()->user->Id);
+$roleName = strtolower(current($roles)->name);
+if($roleName == 'authenticated'){
+    $this->menu=array(
+            array('label'=>'List Deal', 'url'=>array('index')),
+    );    
+}else{
+    $this->menu=array(
+            array('label'=>'List Deal', 'url'=>array('index')),
+            array('label'=>'Create Deal', 'url'=>array('create')),
+            array('label'=>'Update Deal', 'url'=>array('update', 'id'=>$model->ID)),
+            array('label'=>'Delete Deal', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->ID),'confirm'=>'Are you sure you want to delete this item?')),
+            array('label'=>'Manage Deal', 'url'=>array('admin')),
+    );
+}
 ?>
 
 <h1>View Deal #<?php echo $model->ID; ?></h1>
