@@ -153,7 +153,7 @@ class DealController extends Controller
                 $model->User_ID = Yii::app()->user->Id;
                 $model->DateAdded = $model->LastModified = date("Y-m-d h:i:s");
                 $this->render('create',array(
-                        'model'=>$model,'currentRole'=>current($roles)->name,
+                        'model'=>$model,'currentRole'=>strtolower(current($roles)->name),
                         'arrCarInfo'=>$arrCarInfo
                 ));
                 
@@ -232,7 +232,7 @@ class DealController extends Controller
                 $roles = Rights::getAssignedRoles(Yii::app()->user->Id);
                 $role = current($roles);
 		$this->render('update',array(
-			'model'=>$model,'currentRole'=>$role->name
+			'model'=>$model,'currentRole'=>strtolower($role->name)
 		));
 	}
 
@@ -269,6 +269,11 @@ class DealController extends Controller
                     $salesperson= SalesPerson::model()->findByAttributes(array('User_ID'=>Yii::app()->user->Id));
                     $criteria = array(
                                 'condition'=>'SalesPerson_ID='.$salesperson->ID,
+                                'with'=>array('salesPerson'=>array('select'=>'Name'))
+                                );
+                }elseif(strtolower($role->name) == 'authenticated'){
+                    $criteria = array(
+                                'condition'=>'t.User_ID='.Yii::app()->user->Id,
                                 'with'=>array('salesPerson'=>array('select'=>'Name'))
                                 );
                 }
