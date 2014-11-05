@@ -13,7 +13,7 @@ Dealer Home
         <!--TODO SK : Deals, dealership and sales persons need to be filtered by Dealership  -->
                 <li><?php echo CHtml::link('Deals', array('deal/index')); ?></li>
                 <li><?php echo CHtml::link('Update Dealership', array('dealership/index')); ?></li>
-                <li><?php echo CHtml::link('Sales Persons', array('salesperson/index')); ?></li>
+                <li><?php echo CHtml::link('Sales Persons', array('salesPerson/index')); ?></li>
             </ul>
 <?php
 }

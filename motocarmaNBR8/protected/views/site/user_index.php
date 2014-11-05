@@ -18,7 +18,7 @@ User Home
         <!--TODO SK : Deals, dealership and sales persons need to be filtered by Dealership  -->
                 <li><?php echo CHtml::link('Profile', array('user/profile')); ?></li>
                 <li><?php echo CHtml::link('Deals', array('deal/index')); ?></li>
-                <li><?php echo CHtml::link('Saved Cars', array('savedcars/index')); ?></li>
+                <li><?php echo CHtml::link('Saved Cars', array('savedCars/index')); ?></li>
             </ul>
 
 <ul>
