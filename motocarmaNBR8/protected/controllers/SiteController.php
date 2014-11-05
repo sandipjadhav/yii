@@ -33,7 +33,7 @@ class SiteController extends Controller {
                     if(isset($_GET['message']) && $_GET['message'] !=''){
                         $this->render($view . '_index', array('arrCarInfo'=>$arrCarInfo,'guestStyleExists'=>$guestStyleExists,'message'=>$_GET['message']));
                     }else{
-                    $this->render($view . '_index', array('arrCarInfo'=>$arrCarInfo,'$guestStyleExists'=>$guestStyleExists));
+                    $this->render($view . '_index', array('arrCarInfo'=>$arrCarInfo,'guestStyleExists'=>$guestStyleExists));
                     }
             } else {
                 $this->render('index');
