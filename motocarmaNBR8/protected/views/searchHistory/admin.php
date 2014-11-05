@@ -47,8 +47,9 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'columns'=>array(
 		'ID',
 		array(
+                    'name' => 'User',
                     'header'=>'username',
-                    'value'=>'$data->getRelated(\'user\')->username', //column name, php expression
+                    'value'=>$model->getRelated('user')->username, //column name, php expression
                     'type'=>'raw',
                 ),
 		'Make',

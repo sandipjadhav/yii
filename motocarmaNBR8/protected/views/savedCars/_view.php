@@ -17,7 +17,7 @@
 	<?php echo CHtml::encode($data->dealStatus->DealStatus); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('User_ID')); ?>:</b>
+        <b><?php echo CHtml::encode($data->getAttributeLabel('User_ID')); ?>:</b>
 	<?php echo CHtml::encode($data->user->username); ?>
 	<br />
 

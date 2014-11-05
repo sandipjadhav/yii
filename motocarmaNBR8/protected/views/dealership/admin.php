@@ -46,8 +46,8 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'filter'=>$model,
 	'columns'=>array(
 		'ID',
-		array( 'name'=>'username',
-                        'value' =>'$data->getRelated(\'user\')->username', ),
+		array( 'name'=>'User',
+                        'value' =>$model->getRelated('user')->username, ),
 		'Name',
 		'Address',
 		'Email',

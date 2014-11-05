@@ -27,8 +27,9 @@ $this->menu=array(
 		array('name'=>'dealStatus.DealStatus'),
 		'SalesPerson_ID',
 		array(
+                    'name' => 'User',
                 'header'=>'username',
-                'value'=>'$data->getRelated(\'user\')->username', //column name, php expression
+                'value'=>$model->getRelated('user')->username, //column name, php expression
                 'type'=>'raw',
             ),
 		'DealStatus',
