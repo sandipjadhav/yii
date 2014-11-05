@@ -25,7 +25,7 @@ $this->menu=array(
                 array('name' => 'car.Make'),
                 array('name' => 'dealStatus.DealStatus'),
                 array(
-                    'name' => 'User',
+                    'name' => 'user',
                     'header'=>'username',
                     'value'=>$model->getRelated('user')->username, //column name, php expression
                     'type'=>'raw',
