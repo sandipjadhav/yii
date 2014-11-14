@@ -17,7 +17,7 @@ print_r($myData);
 <?php echo Yii::app()->user->getFlash('profileMessage'); ?>
 </div>
 <?php endif; ?>
-<div>this is module.view.profile</div>
+
 <table class="dataGrid">
 <tr>
 	<th class="label"><?php echo CHtml::encode($model->getAttributeLabel('username')); ?>

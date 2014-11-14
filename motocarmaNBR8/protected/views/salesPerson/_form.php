@@ -96,7 +96,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Active'); ?>
-		<?php echo $form->textField($model,'Active'); ?>
+		<?php echo $form->checkBox($model,'Active'); ?>
 		<?php echo $form->error($model,'Active'); ?>
 	</div>
 

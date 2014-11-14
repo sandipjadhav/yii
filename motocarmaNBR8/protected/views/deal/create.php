@@ -8,7 +8,7 @@ $this->breadcrumbs=array(
 );
 $dateFields = array("input[name*='DateAdded']", "input[name*='LastModified']");
 Yii::app()->customUtility->addJqueryDatePicker($dateFields);
-if($currentRole != 'Authenticated'){
+if($currentRole != 'authenticated'){
 $this->menu=array(
 	array('label'=>'List Deal', 'url'=>array('index')),
 	array('label'=>'Manage Deal', 'url'=>array('admin')),

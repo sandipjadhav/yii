@@ -131,10 +131,15 @@ class DealHistory extends CActiveRecord
 	}
         
         // If this is modified, also modify it in SalesPerson and SavedCars model.
-        public function getAllCars()
+        public function getAllCars($optionValueField = 'ID', $optionTextField = 'Make',$distict=false)
         {
-            $model = Car::model()->findAll(array('order'=>'Make'));
-            $list = CHtml::listdata($model,'ID','Make');
+            $attr = array(
+                    'select' => 't.'.$optionValueField.','.'t.'.$optionTextField,
+                    'order'=>$optionTextField,
+                    'distinct' => $distict         
+                    );
+            $model = Car::model()->findAll($attr);
+            $list = CHtml::listdata($model,$optionValueField,$optionTextField);
             return $list;
         }
         
@@ -151,6 +156,14 @@ class DealHistory extends CActiveRecord
         {
             $model = User::model()->findAll(array('order'=>'username'));
             $list = CHtml::listdata($model,'id','username');
+            return $list;
+        }
+        
+        // Get sales persons. If this is modified, also modify it in SavedCars and SalesPerson models.
+        public function getAllSalespersons()
+        {
+            $model = SalesPerson::model()->findAll(array('order'=>'Name'));
+            $list = CHtml::listdata($model,'ID','Name');
             return $list;
         }
         

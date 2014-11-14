@@ -6,15 +6,15 @@
 
 <div class="wide form">
 
-<?php $form=$this->beginWidget('CActiveForm', array(
+<?php 
+$dateFields = array("input[name*='DateAdded']");
+Yii::app()->customUtility->addJqueryDatePicker($dateFields);
+
+$form=$this->beginWidget('CActiveForm', array(
 	'action'=>Yii::app()->createUrl($this->route),
 	'method'=>'get',
 )); ?>
 
-	<div class="row">
-		<?php echo $form->label($model,'ID'); ?>
-		<?php echo $form->textField($model,'ID'); ?>
-	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'Name'); ?>
@@ -58,12 +58,7 @@
 
 	<div class="row">
 		<?php echo $form->label($model,'Active'); ?>
-		<?php echo $form->textField($model,'Active'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'Photo'); ?>
-		<?php echo $form->textField($model,'Photo'); ?>
+		<?php echo $form->checkBox($model,'Active'); ?>
 	</div>
 
 	<div class="row">

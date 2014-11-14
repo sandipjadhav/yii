@@ -22,15 +22,14 @@ class AjaxController extends Controller
         public function actionDealerSalesperson()
 	{
             $criteria = new CDbCriteria;
-            $criteria->select="t.ID, t.Name";
+            //$criteria->select="t.ID, t.Name";
             $criteria->condition="t.Dealership_ID = :dealer_id";
             $criteria->params=array(":dealer_id"=>$_GET['dealerId']);
             $salesPersons=SalesPerson::model()->findAll($criteria);
             
             $arraySp = array();
             foreach($salesPersons as $sp){
-                
-                $arraySp[] = array('ID'=> $sp['ID'],'Name'=>$sp['Name']);
+                $arraySp[] = array('ID'=> $sp['ID'],'Name'=>$sp->user->username);
             }
             echo json_encode(array('salesperson'=>$arraySp)); die;
         }

@@ -333,10 +333,9 @@ class DealController extends Controller
         
         private function getCarDetailsForPreviewPage(){
             $carInfo = array();
-            if(isset($_REQUEST['SavedCardId']) && $_REQUEST['SavedCardId'] !=""){
-            
+            if(Yii::app()->user->getState("guest_style")!=''){
+                //unset(Yii::app()->session['userid']);
                 
-            }elseif(Yii::app()->user->getState("guest_style")!=''){
                 $jsonStyle = Yii::app()->user->getState("guest_style");
 
                 $objStyle = json_decode($jsonStyle);
@@ -346,7 +345,25 @@ class DealController extends Controller
                 $carInfo['Price'] = $objStyle->price->baseMSRP;
                 $carInfo['StyleID'] = $objStyle->id;
             }else{
+                $userId = Yii::app()->user->Id;
+                $car =  Car::model()
+                        ->with(
+                                array(
+                                    'savedCars'=>array('joinType'=>'INNER JOIN',
+                                                      'condition'=> 'savedCars.User_ID ='. $userId,
+                                                      'order'=>'savedCars.ID DESC',
+                                                      'limit'=>'1'),
+                                    )
+                                )
+                        ->find();
                 
+                $carInfo['Make'] = $car['Make'];
+                $carInfo['Model'] = $car['Model'];
+                $carInfo['Year'] = $car['Year'];
+                $carInfo['Price'] = $car['Price'];
+                $carInfo['StyleID'] = $car['StyleID'];
+                
+         
             }
             
             return $carInfo;

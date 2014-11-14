@@ -18,10 +18,9 @@ $this->menu=array(
 
 <h1>View Dealership #<?php echo $model->ID; ?></h1>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'ID',
+<?php 
+    
+	$attributes= array(
 		array('name'=>'username', 'value'=>$model->user->username),
 		'Name',
 		'Address',
@@ -31,8 +30,33 @@ $this->menu=array(
 		'Fax',
 		'Website',
 		'Description',
-		'Active',
-		'Photo',
+		array('name'=>'Active', 'value'=>$model->Active == 1 ? 'Yes' : 'No'),
 		'DateAdded',
-	),
+		
+	);
+    
+    $user = $model->user;
+    $profileFields=ProfileField::model()->forAll()->sort()->findAll();
+	if ($profileFields) {
+		foreach($profileFields as $field) {
+                       $attribute_value = $user->profile->getAttribute($field->varname);
+                       $widgetView = $field->widgetView($user->profile);
+                       if($field->varname == 'profilePhoto'){
+                           $widgetView = '<img src="'.Yii::app()->baseUrl.'/'.$attribute_value.'"  style="width:100px;height:100ox"/>';
+                       
+			array_push($attributes,array(
+					'label' => UserModule::t($field->title),
+					'name' => $field->varname,
+					'type'=>'raw',
+					'value' => (($field->widgetView($user->profile))
+                                                        ?$widgetView
+                                                        :(($field->range)?Profile::range($field->range,$attribute_value):$attribute_value)),
+				));
+                      }
+		} 
+	}
+    
+    $this->widget('zii.widgets.CDetailView', array(
+	'data'=>$model,
+        'attributes'=>$attributes,
 )); ?>

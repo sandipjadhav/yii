@@ -117,6 +117,15 @@ class Deal extends CActiveRecord
             $list = CHtml::listdata($model,'ID','Name');
             return $list;
         }
+        
+        // If this is modified, also modify it in SavedCars and SalesPerson models.
+        public function getAllSalespersons()
+        {
+            $model = SalesPerson::model()->findAll(array('order'=>'Name'));
+            $list = CHtml::listdata($model,'ID','Name');
+            return $list;
+        }
+        
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 *

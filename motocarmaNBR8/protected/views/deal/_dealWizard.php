@@ -49,11 +49,14 @@
                 <li><div>Sales Person : <span id="SalesPersonInfo"></span></div></li>
                 <li>Car Selected : 
                     <div id="CarInfo">
-                        <ul>
+                        <ul> 
                             <li>Make: <span id="carName"><?php echo $arrCarInfo['Make'] ; ?></span></li>
                             <li>Model: <span id="carModel"><?php echo $arrCarInfo['Model'] ; ?></span></li>
                             <li>Year: <span id="carYear"><?php echo $arrCarInfo['Year'] ; ?></span></li>
                             <li>Price: <span id="carPrice"><?php echo $arrCarInfo['Price'] ; ?></span></li>
+                            <li><span id="hidStyleId"style="display:none"><?php echo $arrCarInfo['StyleID'] ; ?></span>
+                                <img id="carPhoto" style="width:100px;height:100px" src=""/>
+                            </li>
                         </ul>       
                     </div>
                 </li>
@@ -74,6 +77,37 @@
 
 </div><!-- form -->
 <script type="text/javascript">
+    var style_id = $("#hidStyleId").text();
+    $(document).ready(function(){
+    $.ajax({
+        'url':'https://api.edmunds.com/v1/api/vehiclephoto/service/findphotosbystyleid?styleId='+style_id+'&fmt=json&api_key=mexvxqeke9qmhhawsfy8j9qd',
+        'dataType':'json',
+        'success': function(result){
+            
+                var photoUrl;
+                var noPhoto = true;
+                var car;
+                for (i = 0; i < result.length; i++)
+                {
+                    car = result[i];
+                    if (car.shotTypeAbbreviation === 'S') {
+                        //code
+                        photoUrl = car.photoSrcs[0];
+                        noPhoto = false;
+                        break;
+                    }
+                }
+                if (noPhoto === true) {
+                    car = result[0];
+                    photoUrl = car.photoSrcs[0];
+                }
+            
+           console.log(photoUrl)
+           $("#carPhoto").attr('src','http://media.ed.edmunds-media.com/'+photoUrl);
+        }
+    });
+});
+    
     function getSalesperson(){
         var dealerId = $("#Deal_Dealership_ID").val();
 
@@ -104,6 +138,8 @@
         $(".dealPreview").show();
         $(".userPrice").show();
         $(".buttons").show();
+        
+        
         
         $("#DealerInfo").html($("#Deal_Dealership_ID option:selected").text());
         $("#SalesPersonInfo").html($("#Deal_SalesPerson_ID option:selected").text());

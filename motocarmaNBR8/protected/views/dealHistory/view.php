@@ -17,21 +17,26 @@ $this->menu=array(
 ?>
 
 <h1>View DealHistory #<?php echo $model->ID; ?></h1>
-
+<?php
+$salesPerson = '';
+if($model->salesPerson && $model->salesPerson->user && $model->salesPerson->user->profile){
+    $salesPerson = $model->salesPerson->user->profile->getAttribute('firstname')." ".$model->salesPerson->user->profile->getAttribute('lastname');
+}
+?>
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'ID',
+		//'ID',
 		array('name' => 'car.Make'),
-		'Deal_ID',
+		//'Deal_ID',
 		array('name'=>'dealStatus.DealStatus'),
-		'SalesPerson_ID',
+		array('name'=>'Sales Person', 'value'=>$salesPerson),
 		array(
                     'name' => 'User',
                 'header'=>'username',
                 'value'=>$model->getRelated('user')->username, //column name, php expression
                 'type'=>'raw',
-            ),
+                ),
 		'DealStatus',
 		'Make',
 		'Model',

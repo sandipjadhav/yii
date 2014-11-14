@@ -6,29 +6,29 @@
 
 <div class="wide form">
 
-<?php $form=$this->beginWidget('CActiveForm', array(
+<?php 
+    $dateFields = array("input[name*='DateAdded']");
+    Yii::app()->customUtility->addJqueryDatePicker($dateFields);
+
+    $form=$this->beginWidget('CActiveForm', array(
 	'action'=>Yii::app()->createUrl($this->route),
 	'method'=>'get',
 )); ?>
 
-	<div class="row">
-		<?php echo $form->label($model,'ID'); ?>
-		<?php echo $form->textField($model,'ID'); ?>
-	</div>
-
+	
 	<div class="row">
 		<?php echo $form->label($model,'Car_ID'); ?>
-		<?php echo $form->textField($model,'Car_ID'); ?>
+                <?php echo $form->dropDownList($model,'Car_ID', $model->getAllCars(), array('empty'=>'Select')); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'DealStatus_ID'); ?>
-		<?php echo $form->textField($model,'DealStatus_ID'); ?>
+		<?php echo $form->dropDownList($model,'DealStatus_ID', $model->getAllDealStatus(), array('empty'=>'Select')); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'User_ID'); ?>
-		<?php echo $form->textField($model,'User_ID'); ?>
+                <?php echo $form->dropDownList($model,'User_ID', $model->getAllUsers(), array('empty'=>'Select')); ?>
 	</div>
 
 	<div class="row">

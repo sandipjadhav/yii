@@ -11,49 +11,45 @@
 	'method'=>'get',
 )); ?>
 
-	<div class="row">
-		<?php echo $form->label($model,'ID'); ?>
-		<?php echo $form->textField($model,'ID'); ?>
-	</div>
-
+	
 	<div class="row">
 		<?php echo $form->label($model,'Car_ID'); ?>
-		<?php echo $form->textField($model,'Car_ID'); ?>
+                <?php echo $form->dropDownList($model,'Car_ID', $model->getAllCars(), array('empty'=>'Select')); ?>
 	</div>
 
-	<div class="row">
+	<!--div class="row">
 		<?php echo $form->label($model,'Deal_ID'); ?>
 		<?php echo $form->textField($model,'Deal_ID'); ?>
-	</div>
+	</div-->
 
 	<div class="row">
 		<?php echo $form->label($model,'DealStatus_ID'); ?>
-		<?php echo $form->textField($model,'DealStatus_ID'); ?>
+		<?php echo $form->dropDownList($model,'DealStatus_ID', $model->getAllDealStatus(), array('empty'=>'Select')); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'SalesPerson_ID'); ?>
-		<?php echo $form->textField($model,'SalesPerson_ID'); ?>
-	</div>
+		<?php echo $form->dropDownList($model,'SalesPerson_ID', $model->getAllSalespersons(), array('empty'=>'Select')); ?>
+        </div>
 
 	<div class="row">
 		<?php echo $form->label($model,'User_ID'); ?>
-		<?php echo $form->textField($model,'User_ID'); ?>
+                <?php echo $form->dropDownList($model,'User_ID', $model->getAllUsers(), array('empty'=>'Select')); ?>
 	</div>
 
-	<div class="row">
+	<!--div class="row">
 		<?php echo $form->label($model,'DealStatus'); ?>
 		<?php echo $form->textField($model,'DealStatus',array('size'=>45,'maxlength'=>45)); ?>
-	</div>
+	</div-->
 
 	<div class="row">
 		<?php echo $form->label($model,'Make'); ?>
-		<?php echo $form->textField($model,'Make',array('size'=>45,'maxlength'=>45)); ?>
+                <?php echo $form->dropDownList($model,'Make', $model->getAllCars('Make','Make',true), array('empty'=>'Select')); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'Model'); ?>
-		<?php echo $form->textField($model,'Model',array('size'=>45,'maxlength'=>45)); ?>
+                <?php echo $form->dropDownList($model,'Model', $model->getAllCars('Model','Model',true), array('empty'=>'Select')); ?>
 	</div>
 
 	<div class="row">
@@ -61,10 +57,10 @@
 		<?php echo $form->textField($model,'Price',array('size'=>45,'maxlength'=>45)); ?>
 	</div>
 
-	<div class="row">
+	<!--div class="row">
 		<?php echo $form->label($model,'SalesPersonUserName'); ?>
 		<?php echo $form->textField($model,'SalesPersonUserName',array('size'=>45,'maxlength'=>45)); ?>
-	</div>
+	</div-->
 
 	<div class="row">
 		<?php echo $form->label($model,'StyleID'); ?>
@@ -73,13 +69,15 @@
 
 	<div class="row">
 		<?php echo $form->label($model,'Year'); ?>
-		<?php echo $form->textField($model,'Year',array('size'=>45,'maxlength'=>45)); ?>
+                <?php $yRange = range(date('Y')-10,date('Y'));
+                $year = array_combine($yRange,$yRange);?>
+		<?php echo $form->dropDownList($model,'Year',$year, array('empty'=>'Select')); ?>
 	</div>
 
-	<div class="row">
+	<!--div class="row">
 		<?php echo $form->label($model,'UserName'); ?>
 		<?php echo $form->textField($model,'UserName',array('size'=>45,'maxlength'=>45)); ?>
-	</div>
+	</div-->
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Search'); ?>

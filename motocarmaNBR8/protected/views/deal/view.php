@@ -25,14 +25,18 @@ if($roleName == 'authenticated'){
 
 <h1>View Deal #<?php echo $model->ID; ?></h1>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
+<?php 
+    $salesPerson = '';
+    if($model->salesPerson && $model->salesPerson->user && $model->salesPerson->user->profile){
+        $salesPerson = $model->salesPerson->user->profile->getAttribute('firstname')." ".$model->salesPerson->user->profile->getAttribute('lastname');
+    }
+    $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'ID',
 		array('name' => 'car.Make'),
                 array('name'=>'Dealership', 'value'=>$model->dealership->Name),
 		array('name'=>'dealStatus.DealStatus'),
-		'SalesPerson_ID',
+		array('name'=>'Sales Person', 'value'=>$salesPerson),
 		array('name'=>'username', 'value'=>$model->user->username),
 		'Price',
 		'DateAdded',

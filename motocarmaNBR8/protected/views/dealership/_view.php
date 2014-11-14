@@ -5,13 +5,9 @@
 
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('ID')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->ID), array('view', 'id'=>$data->ID)); ?>
-	<br />
-        
-        <?php if(!empty($data->user->username)) { ?>
+	<?php if(!empty($data->user->username)) { ?>
 	<b><?php echo CHtml::encode($data->getAttributeLabel('User_ID')); ?>:</b>
-	<?php echo CHtml::encode($data->user->username); ?>
+	<?php echo CHtml::link(CHtml::encode($data->user->username), array('view', 'id'=>$data->ID)); ?>
 	<br />
         <?php } ?>
 

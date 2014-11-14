@@ -24,7 +24,8 @@ class SiteController extends Controller {
      * when an action is not explicitly requested by users.
      */
     public function actionUserHome() {
-        $guestStyleExists = Yii::app()->user->hasState("guest_style") ;
+        Yii::app()->clientScript->registerCoreScript('jquery');
+        $guestStyleExists = Yii::app()->user->getState("guest_style") ;
         $arrCarInfo = $this->getCarDetailsForPreviewPage();
         $roles = Rights::getAssignedRoles(Yii::app()->user->Id);
         if (count($roles) === 1) { 
@@ -192,7 +193,6 @@ class SiteController extends Controller {
                                                       'condition'=> 'savedCars.User_ID ='. $userId,
                                                       'order'=>'savedCars.ID DESC',
                                                       'limit'=>'1'),
-                                    'deals'=> array('joinType'=>'INNER JOIN')
                                     )
                                 )
                         ->find();
