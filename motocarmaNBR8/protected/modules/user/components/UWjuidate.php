@@ -8,6 +8,8 @@ class UWjuidate {
 	public $params = array(
 		'ui-theme'=>'base',
 		'language'=>'en',
+                'changeMonth'=> 'true',
+                'changeYear'=> 'true'
 	);
 	
 	/**
@@ -58,6 +60,7 @@ class UWjuidate {
 		if (!isset($htmlOptions['id'])) $htmlOptions['id'] = get_class($model).'_'.$field->varname;
 		
 		$id = $htmlOptions['id'];
+                $options = $this->params;
 		$options['dateFormat'] = 'yy-mm-dd';
 		$options=CJavaScript::encode($options);
 		
