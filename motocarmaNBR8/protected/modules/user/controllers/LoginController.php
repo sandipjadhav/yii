@@ -8,9 +8,11 @@ class LoginController extends Controller
 	 * Displays the login page
 	 */
 	public function actionLogin()
-	{ 
-                if (Yii::app()->user->isGuest) { 
-                    
+    {
+        if (Yii::app()->user->isGuest) {
+            $jsonStyle = Yii::app()->user->getState("guest_style");
+            //print_r($jsonStyle);
+            //echo $returnUrl = $this->saveSavedCar();die;
 			$model=new UserLogin;
 			// collect user input data
 			if(isset($_POST['UserLogin']))
@@ -67,7 +69,7 @@ class LoginController extends Controller
                     if(!$savedCars->save()){
                         echo "Error on SavedCar save:".$savedCars->errorMessage();
                     }else{
-                        $returnUrl = Yii::app()->createUrl('site/UserHome');
+                        $returnUrl = Yii::app()->createUrl('deal/create');
                     }
                 }else{
                     echo "Error on Car save";;

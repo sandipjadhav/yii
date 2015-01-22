@@ -68,6 +68,9 @@ class AdminController extends Controller
 	{
 		$model=new User;
 		$profile=new Profile;
+        Yii::import('application.modules.rights.models.*');
+        $roleAssign = new AssignmentForm();
+        $roleSelectOptions = Rights::getAuthItemSelectOptions(CAuthItem::TYPE_ROLE);
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];
@@ -81,6 +84,12 @@ class AdminController extends Controller
 				if($model->save()) {
 					$profile->user_id=$model->id;
 					$profile->save();
+                    $roleName = $_POST['AssignmentForm']['itemname'];
+                    $authorizer = Rights::getAuthorizer();
+                    $authorizer->authManager->assign($roleName, $model->id);
+                    $item = $authorizer->authManager->getAuthItem($roleName);
+                    $item = $authorizer->attachAuthItemBehavior($item);
+                                        
 				}
 				$this->redirect(array('view','id'=>$model->id));
 			} else $profile->validate();
@@ -89,6 +98,8 @@ class AdminController extends Controller
 		$this->render('create',array(
 			'model'=>$model,
 			'profile'=>$profile,
+            'role' => $roleAssign,
+            'roleSelectOptions' => $roleSelectOptions,
 		));
 	}
 
@@ -100,6 +111,9 @@ class AdminController extends Controller
 	{
 		$model=$this->loadModel();
 		$profile=$model->profile;
+        Yii::import('application.modules.rights.models.*');
+        $roleAssign = new AssignmentForm();
+        $roleSelectOptions = Rights::getAuthItemSelectOptions(CAuthItem::TYPE_ROLE);
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];
@@ -113,6 +127,15 @@ class AdminController extends Controller
 				}
 				$model->save();
 				$profile->save();
+                $roleName = $_POST['AssignmentForm']['itemname'];
+                if ($roleName != '') {
+                    $authorizer = Rights::getAuthorizer();
+                    $authorizer->authManager->assign($roleName, $model->id);
+                    $item = $authorizer->authManager->getAuthItem($roleName);
+                    $item = $authorizer->attachAuthItemBehavior($item);
+                }
+
+                                
 				$this->redirect(array('view','id'=>$model->id));
 			} else $profile->validate();
 		}
@@ -120,6 +143,8 @@ class AdminController extends Controller
 		$this->render('update',array(
 			'model'=>$model,
 			'profile'=>$profile,
+            //'role'=>$roleAssign,
+            //'roleSelectOptions'=>$roleSelectOptions,
 		));
 	}
 

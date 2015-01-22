@@ -1,7 +1,7 @@
 <?php
 
 class SiteController extends Controller {
-
+    public $defaultAction = 'page';
     /**
      * Declares class-based actions.
      */
@@ -16,6 +16,7 @@ class SiteController extends Controller {
             // They can be accessed via: index.php?r=site/page&view=FileName
             'page' => array(
                 'class' => 'CViewAction',
+                'defaultView' => 'about'
             ),
         );
     }
@@ -172,7 +173,7 @@ class SiteController extends Controller {
     }
     
     private function getCarDetailsForPreviewPage(){
-            $carInfo = array();
+        $carInfo = array();
             if(Yii::app()->user->getState("guest_style")!=''){
                 //unset(Yii::app()->session['userid']);
                 

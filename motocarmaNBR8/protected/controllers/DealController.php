@@ -30,7 +30,10 @@ class DealController extends Controller
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view','Selectdealer'),
 				'users'=>array('*'),
-			),
+            ), array('allow',  // allow all users to perform 'index' and 'view' actions
+                'actions' => array('index', 'view', 'Compare'),
+                'users' => array('*'),
+            ),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update'),
 				'users'=>array('@'),
@@ -62,6 +65,21 @@ class DealController extends Controller
             
             $this->render('selectdealer',array('dealers'=>$dealers));
 	}
+
+    public function actionCompare()
+    {
+        $message = '';
+
+        if (Yii::app()->user->id) {
+
+        } else {
+            $savedCars = Yii::app()->user->getState("guest_style");
+        }
+        if ($savedCars == '' || (is_array($savedCars) && count($savedCars) == 0)) {
+            $message = 'There are no cars in wishlist for comparison';
+        }
+        $this->render('compare', array('savedCars' => $savedCars, 'message' => $message));
+    }
         
 	/**
 	 * Creates a new model.

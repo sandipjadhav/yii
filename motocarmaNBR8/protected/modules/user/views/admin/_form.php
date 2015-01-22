@@ -35,7 +35,15 @@
 		<?php echo CHtml::activeDropDownList($model,'status',User::itemAlias('UserStatus')); ?>
 		<?php echo CHtml::error($model,'status'); ?>
 	</div>
-<?php 
+
+    <?php if (is_array($roleSelectOptions) && count($roleSelectOptions) > 0) { ?>
+        <div class="row">
+            <?php echo CHtml::label('Role', 'AssignmentForm_itemname'); ?>
+            <?php echo CHtml::activeDropDownList($role, 'itemname', $roleSelectOptions); ?>
+            <?php echo CHtml::error($model, 'itemname'); ?>
+        </div>
+    <?php
+    }
 		$profileFields=$profile->getFields();
 		if ($profileFields) {
 			foreach($profileFields as $field) {

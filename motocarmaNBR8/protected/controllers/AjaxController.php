@@ -2,24 +2,107 @@
 
 class AjaxController extends Controller
 {
+    public function beforeAction($action)
+    {
+        $this->layout = false;
+        return parent::beforeAction($action);
+    }
 	public function actionSelectcar()
-	{ 
+    {
             /*
             $jsonStyle = Yii::app()->user->getState("guest_style");
             $arrStyle = json_decode($jsonStyle);
             echo "<pre>"; var_dump($arrStyle); die;
             */
+
+
+        $currentSavedCars = array();
+
+
+        //header('content-type: application/json');
             $jsonStyle = file_get_contents('php://input');
-            Yii::app()->user->setState("guest_style",$jsonStyle);
-            if(Yii::app()->user->isGuest){
-                
-                echo json_encode(array('url'=>'login'));
-            }else{
-                echo json_encode(array('url'=>'dealer'));
+        $selectedCar = json_decode($jsonStyle);
+        $currentSavedCars = Yii::app()->user->getState("guest_style");
+        if (count($currentSavedCars) < Yii::app()->params['MAX_GARAGE_COUNT']) {
+            if (is_array($currentSavedCars)) {
+                if (count($currentSavedCars) > 0) {
+                    foreach ($currentSavedCars as $car) {
+                        $objCarInfo = json_decode($car);
+                        if ($selectedCar->id == $objCarInfo->id) {
+                            $error = array('error' => 'CAR_ALREADY_SELECTED', 'message' => 'Selected car has been already added to the wishlist.');
+                            header('HTTP/1.1 500 Internal Server Error');
+                            echo json_encode($error);
+                            die;
+                        } else {
+                            $currentSavedCars[] = $jsonStyle;
+                            Yii::app()->user->setState("guest_style", $currentSavedCars);
+                            $currentSavedCars = Yii::app()->user->getState("guest_style");
+                            $this->renderPartial('_miniGarage', array('cars' => $currentSavedCars), false, true);
+                            die;
+                        }
+                    }
+                } else {
+                    $currentSavedCars[] = $jsonStyle;
+                    Yii::app()->user->setState("guest_style", $currentSavedCars);
+                    $currentSavedCars = Yii::app()->user->getState("guest_style");
+                    $this->renderPartial('_miniGarage', array('cars' => $currentSavedCars), false, true);
+                }
+            } else {
+                $currentSavedCars[] = $jsonStyle;
+                Yii::app()->user->setState("guest_style", $currentSavedCars);
+                $currentSavedCars = Yii::app()->user->getState("guest_style");
+                $this->renderPartial('_miniGarage', array('cars' => $currentSavedCars), false, true);
             }
+
+
+        } else {
+            $error = array('error' => 'MAX_GARAGE_COUNT_EXCEEDED', 'message' => 'Maximum of ' . Yii::app()->params['MAX_GARAGE_COUNT'] . ' cars are allowed in wishlist.');
+            header('HTTP/1.1 500 Internal Server Error');
+            echo json_encode($error);
+            die;
+        }
+        /*if(Yii::app()->user->isGuest){
+
+            echo json_encode(array('url'=>'login'));
+        }else{
+            echo json_encode(array('url'=>'dealer'));
+        }*/
 	}
-        
-        public function actionDealerSalesperson()
+
+    private function getGarage()
+    {
+        $currentSavedCars = Yii::app()->user->getState("guest_style");
+
+        return json_encode($currentSavedCars);
+    }
+
+
+    public function actionGarageInfo()
+    {
+        $currentSavedCars = Yii::app()->user->getState("guest_style");
+
+        $this->renderPartial('_miniGarage', array('cars' => $currentSavedCars), false, true);
+
+    }
+
+    public function actionRemoveGarageCar()
+    {
+        $carId = $_GET['carId'];
+        $newCarSession = array();
+        $currentSavedCars = Yii::app()->user->getState("guest_style");
+        foreach ($currentSavedCars as $seq => $carJson) {
+            $car = json_decode($carJson, true);
+            if ($car['id'] != $carId) {
+                $newCarSession[] = $carJson;
+            }
+        }
+
+        Yii::app()->user->setState("guest_style", $newCarSession);
+        $this->renderPartial('_miniGarage', array('cars' => $newCarSession), false, true);
+    }
+
+
+    public function actionDealerSalesperson()
 	{
             $criteria = new CDbCriteria;
             //$criteria->select="t.ID, t.Name";

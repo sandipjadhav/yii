@@ -97,10 +97,10 @@ return array(
                     'defaultRoles'=>array('Authenticated', 'Guest'),
                 ),
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=motocarmaNBR8;unix_socket=/Applications/MAMP/tmp/mysql/mysql.sock',
+            'connectionString' => 'mysql:host=localhost;dbname=motocarmanbr8;',//unix_socket=/Applications/MAMP/tmp/mysql/mysql.sock',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => 'root',
+            'password' => '',
 			'charset' => 'utf8',
                         'tablePrefix' => 'tbl_',
                         /*'connectionString'   => 'mysql:host=internal-db.s105453.gridserver.com;dbname=db105453_motocarma;',//unix_socket=/Applications/MAMP/tmp/mysql/mysql.sock',
@@ -147,5 +147,7 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'sandeep.kolte@gmail.com',
+        'MAX_GARAGE_COUNT' => 3,
+        'COMPARE_ATTRIBUTES' => array('Price', ' Make', ' Model', ' Year', ' Transmission Type', ' Fuel Type', ' Exterior Color', ' Interior Color', ' Navigation', ' Body Trim', ' Driven Wheels (2 or 4)', ' Number of Seats', ' MPG City', ' MPG Highway')
 	),
 );
