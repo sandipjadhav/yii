@@ -5,7 +5,6 @@
  *
  * The followings are the available columns in table 'SalesPerson':
  * @property integer $ID
- * @property string $Name
  * @property integer $Dealership_ID
  * @property integer $User_ID
  * @property string $ContactPhone
@@ -39,10 +38,10 @@ class SalesPerson extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('ID, Dealership_ID, User_ID', 'required'),
-			array('ID, Dealership_ID, User_ID, Active', 'numerical', 'integerOnly'=>true),
-			array('Name', 'max'=>20),
-                        array('ContactPhone, Email', 'length', 'max'=>45),
+			array('Dealership_ID', 'required'),
+			array('Dealership_ID, User_ID, Active', 'numerical', 'integerOnly'=>true),
+			array('Name', 'length', 'max'=>20),
+			array('ContactPhone, Email', 'length', 'max'=>45),
 			array('Description', 'length', 'max'=>500),
 			array('DateAdded, Photo', 'safe'),
 			// The following rule is used by search().
@@ -104,7 +103,6 @@ class SalesPerson extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('ID',$this->ID);
-                $criteria->compare('Name',$this->Name);
 		$criteria->compare('Dealership_ID',$this->Dealership_ID);
 		$criteria->compare('User_ID',$this->User_ID);
 		$criteria->compare('ContactPhone',$this->ContactPhone,true);
@@ -145,4 +143,31 @@ class SalesPerson extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+    public function getPhoto()
+    {
+        $photoUrl = Yii::app()->params['TEMP_PROFILE_PHOTO'];
+        if (!$this->user->profile) {
+            $profileFields = ProfileField::model()->forAll()->sort()->findAll();
+            if ($profileFields) {
+                foreach ($profileFields as $field) {
+                    if ($field->varname == 'profilePhoto') {
+                        $attribute_value = $this->user->profile->getAttribute($field->varname);
+                        $photoUrl = $attribute_value;
+                    }
+                }
+            }
+        }
+        return $photoUrl;
+    }
+
+    public function getSalespersonName()
+    {
+        $Name = '';
+        if ($this->user->profile) {
+            $Name = $this->user->profile->getAttribute('firstname') . " " . $this->user->profile->getAttribute('lastname');
+        }
+        $Name = trim($Name) == '' ? $this->Name : trim($Name);
+        return $Name;
+    }
 }

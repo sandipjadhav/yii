@@ -25,8 +25,9 @@ $this->menu=array(
                 array('name' => 'car.Make'),
                 array('name' => 'dealStatus.DealStatus'),
                 array(
+                    'name' => 'user',
                     'header'=>'username',
-                    'value'=>'$data->getRelated(\'user\')->username', //column name, php expression
+                    'value'=>$model->getRelated('user')->username, //column name, php expression
                     'type'=>'raw',
                 ),
                 'DateAdded',

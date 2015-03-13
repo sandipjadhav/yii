@@ -63,19 +63,50 @@ class SalesPersonController extends Controller
 	public function actionCreate()
 	{
 		$model=new SalesPerson;
-
+                $user = new User;
+                $profile=new Profile;
+                $profile->regMode = true;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['SalesPerson']))
 		{
+                    try{
 			$model->attributes=$_POST['SalesPerson'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->ID));
+			$user->attributes=$_POST['User'];
+                        $profile->attributes=((isset($_POST['Profile'])?$_POST['Profile']:array()));
+                        if($user->validate() && $model->validate() && $profile->validate()){
+                            $transaction = Yii::app()->db->beginTransaction();
+                            if($user->save(false)){
+                                
+                                $profile->user_id=$user->id;
+                                if($profile->save()){
+                                    $model->User_ID = $user->id;
+                                    if($model->save()){
+                                        
+                                    }else{
+                                        $transaction->rollback();
+                                    }
+                                }else{
+                                    $transaction->rollback();
+                                }
+                                
+                            }else{
+                                $transaction->rollback();
+                            }
+                            $transaction->commit();
+                            $this->redirect(array('view','id'=>$model->ID));
+                        }
+                    }catch(Exception $e){
+                            $transaction->rollBack();
+                            throw new CHttpException(null,"Error while saving Sales Person :  ".$e->getMessage());
+                    }
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
+                        'user'=>$user,
+                        'profile' => $profile
 		));
 	}
 
@@ -87,10 +118,11 @@ class SalesPersonController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
+                //$user = $model->user;
+                $user = null;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
+                
 		if(isset($_POST['SalesPerson']))
 		{
 			$model->attributes=$_POST['SalesPerson'];
@@ -99,7 +131,7 @@ class SalesPersonController extends Controller
 		}
 
 		$this->render('update',array(
-			'model'=>$model,
+			'model'=>$model,'user'=>$user, 'profile'=>null
 		));
 	}
 
@@ -122,7 +154,19 @@ class SalesPersonController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('SalesPerson');
+            $roles = Rights::getAssignedRoles(Yii::app()->user->Id); 
+            $criteria = array();
+            if (count($roles) === 1) { 
+                $role = current($roles);
+                if($role->name == 'dealer'){
+                    $dealership=  Dealership::model()->findByAttributes(array('User_ID'=>Yii::app()->user->Id));
+                    $criteria = array(
+                                'condition'=>'Dealership_ID='.$dealership->ID
+                                );
+                }
+            }
+		$dataProvider=new CActiveDataProvider('SalesPerson',
+                                array('criteria'=> $criteria));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));

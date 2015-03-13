@@ -4,7 +4,10 @@
 
 	<p class="note"><?php echo UserModule::t('Fields with <span class="required">*</span> are required.'); ?></p>
 
-	<?php echo CHtml::errorSummary(array($model,$profile)); ?>
+    <?php
+    if ($profile) {
+        echo CHtml::errorSummary(array($model, $profile));
+    } ?>
 
 	<div class="row">
 		<?php echo CHtml::activeLabelEx($model,'username'); ?>
@@ -35,7 +38,16 @@
 		<?php echo CHtml::activeDropDownList($model,'status',User::itemAlias('UserStatus')); ?>
 		<?php echo CHtml::error($model,'status'); ?>
 	</div>
-<?php 
+
+    <?php if (is_array($roleSelectOptions) && count($roleSelectOptions) > 0) { ?>
+        <div class="row">
+            <?php echo CHtml::label('Role', 'AssignmentForm_itemname'); ?>
+            <?php echo CHtml::activeDropDownList($role, 'itemname', $roleSelectOptions); ?>
+            <?php echo CHtml::error($model, 'itemname'); ?>
+        </div>
+    <?php
+    }
+    if ($profile) {
 		$profileFields=$profile->getFields();
 		if ($profileFields) {
 			foreach($profileFields as $field) {
@@ -58,6 +70,7 @@
 			<?php
 			}
 		}
+    }
 ?>
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

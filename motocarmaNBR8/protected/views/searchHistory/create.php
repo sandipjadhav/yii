@@ -6,7 +6,8 @@ $this->breadcrumbs=array(
 	'Search Histories'=>array('index'),
 	'Create',
 );
-
+$dateFields = array("input[name*='DateAdded']");
+Yii::app()->customUtility->addJqueryDatePicker($dateFields);
 $this->menu=array(
 	array('label'=>'List SearchHistory', 'url'=>array('index')),
 	array('label'=>'Manage SearchHistory', 'url'=>array('admin')),

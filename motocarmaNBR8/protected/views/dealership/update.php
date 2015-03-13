@@ -7,7 +7,8 @@ $this->breadcrumbs=array(
 	$model->Name=>array('view','id'=>$model->ID),
 	'Update',
 );
-
+$dateFields = array("input[name*='DateAdded']");
+Yii::app()->customUtility->addJqueryDatePicker($dateFields);
 $this->menu=array(
 	array('label'=>'List Dealership', 'url'=>array('index')),
 	array('label'=>'Create Dealership', 'url'=>array('create')),

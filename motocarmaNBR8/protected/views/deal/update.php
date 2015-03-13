@@ -7,15 +7,27 @@ $this->breadcrumbs=array(
 	$model->ID=>array('view','id'=>$model->ID),
 	'Update',
 );
-
-$this->menu=array(
+$dateFields = array("input[name*='DateAdded']", "input[name*='LastModified']");
+Yii::app()->customUtility->addJqueryDatePicker($dateFields);
+/*$this->menu=array(
 	array('label'=>'List Deal', 'url'=>array('index')),
 	array('label'=>'Create Deal', 'url'=>array('create')),
 	array('label'=>'View Deal', 'url'=>array('view', 'id'=>$model->ID)),
 	array('label'=>'Manage Deal', 'url'=>array('admin')),
-);
+);*/
 ?>
 
-<h1>Update Deal <?php echo $model->ID; ?></h1>
+    <h2>Deal Dashboard</h2>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php
+$this->renderPartial('_dealWizard', array('model' => $model,
+    'currentRole' => $currentRole,
+    'arrCarInfo' => $arrCarInfo,
+    'messagesAdapter' => $messagesAdapter,
+    'dealer' => $dealer,
+    'salesperson' => $salesperson,
+    'dealHistory' => $dealHistory,
+    'msgModel' => $msgModel,
+    'reviews' => $reviews
+));
+?>

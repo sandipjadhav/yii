@@ -122,7 +122,26 @@ class SavedCarsController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('SavedCars');
+        //$dataProvider=new CActiveDataProvider('SavedCars');
+        $roles = Rights::getAssignedRoles(Yii::app()->user->Id);
+
+        $roles = Rights::getAssignedRoles(Yii::app()->user->Id);
+        $criteria = array();
+        if (count($roles) === 1) {
+            $role = current($roles);
+            if (strtolower($role->name) == 'authenticated') {
+                $criteria = array(
+                    'condition' => 't.User_ID=' . Yii::app()->user->Id
+                );
+            }
+        }
+
+        $dataProvider = new CActiveDataProvider('SavedCars',
+            array(
+                'criteria' => $criteria
+            )
+        );
+                
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));

@@ -122,8 +122,45 @@ class DealHistoryController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('DealHistory');
-		$this->render('index',array(
+        $dealId = $_GET['dealId'];
+        $condition = $criteria = array();
+        if ($dealId != '') {
+            $condition[] = 'Deal_ID=' . $dealId;
+        } else {
+            $roles = Rights::getAssignedRoles(Yii::app()->user->Id);
+            if (count($roles) === 1) {
+                $role = current($roles);
+                if ($role->name == 'dealer') {
+
+                    $dealership = Dealership::model()->findByAttributes(array('User_ID' => Yii::app()->user->Id));
+                    if ($dealership) {
+                        $deals = Deal::model()->findAllByAttributes(array('Dealership_ID' => $dealership->ID));
+                    }
+                    $dealIds = array();
+                    foreach ($deals as $d) {
+                        $dealIds[] = $d->ID;
+                    }
+                    $criteria = array(
+                        'condition' => 'Deal_ID in (' . implode(',', $dealIds) . ')'
+                    );
+                } elseif ($role->name == 'salesperson') {
+                    $salesperson = SalesPerson::model()->findByAttributes(array('User_ID' => Yii::app()->user->Id));
+                    $criteria = array(
+                        'condition' => 'SalesPerson_ID=' . $salesperson->ID
+                    );
+                }
+            }
+        }
+        if (count($condition) > 0) {
+            $criteria = array(
+                'condition' => implode(' AND ', $condition),
+            );
+        }
+
+        $dataProvider = new CActiveDataProvider('DealHistory',
+            array('criteria' => $criteria));
+
+        $this->render('index', array(
 			'dataProvider'=>$dataProvider,
 		));
 	}

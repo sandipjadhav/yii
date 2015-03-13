@@ -5,12 +5,9 @@
 
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('ID')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->ID), array('view', 'id'=>$data->ID)); ?>
-	<br />
-
+	
 	<b><?php echo CHtml::encode($data->getAttributeLabel('Dealership_ID')); ?>:</b>
-	<?php echo CHtml::encode($data->dealership->Name); ?>
+	<?php echo CHtml::link(CHtml::encode($data->dealership->Name), array('view', 'id'=>$data->ID));; ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('User_ID')); ?>:</b>
@@ -22,7 +19,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('Email')); ?>:</b>
-	<?php echo CHtml::encode($data->Email); ?>
+	<?php echo CHtml::encode($data->user->email); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('Description')); ?>:</b>

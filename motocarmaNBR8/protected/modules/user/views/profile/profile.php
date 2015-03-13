@@ -17,7 +17,7 @@ print_r($myData);
 <?php echo Yii::app()->user->getFlash('profileMessage'); ?>
 </div>
 <?php endif; ?>
-<div>this is module.view.profile</div>
+
 <table class="dataGrid">
 <tr>
 	<th class="label"><?php echo CHtml::encode($model->getAttributeLabel('username')); ?>
@@ -29,12 +29,21 @@ print_r($myData);
 		$profileFields=ProfileField::model()->forOwner()->sort()->findAll();
 		if ($profileFields) {
 			foreach($profileFields as $field) {
-				//echo "<pre>"; print_r($profile); die();
-			?>
-<tr>
-	<th class="label"><?php echo CHtml::encode(UserModule::t($field->title)); ?>
-</th>
-    <td><?php echo (($field->widgetView($profile))?$field->widgetView($profile):CHtml::encode((($field->range)?Profile::range($field->range,$profile->getAttribute($field->varname)):$profile->getAttribute($field->varname)))); ?>
+                //echo "<pre>"; print_r($profile); die();
+                ?>
+                <tr>
+                    <th class="label"><?php echo CHtml::encode(UserModule::t($field->title)); ?>
+                    </th>
+                    <td><?php
+                        if ($profile) {
+                            if ($field->varname == 'profilePhoto') {
+                                $photo = Yii::app()->baseUrl . '/' . $profile->getAttribute('profilePhoto');
+                                echo '<img src="' . $photo . '" width="50" height="50" style=""/>';
+                            } else {
+                                echo(($field->widgetView($profile)) ? $field->widgetView($profile) : CHtml::encode((($field->range) ? Profile::range($field->range, $profile->getAttribute($field->varname)) : $profile->getAttribute($field->varname))));
+                            }
+                        }
+        ?>
 </td>
 </tr>
 			<?php

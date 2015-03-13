@@ -5,16 +5,14 @@
 
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('ID')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->ID), array('view', 'id'=>$data->ID)); ?>
-	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Dealership_ID')); ?>:</b>
-        <?php if(!empty($data->dealership)) { echo CHtml::encode($data->dealership->Name); } ?>
-	<br />
-        
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Car_ID')); ?>:</b>
-        <?php echo CHtml::encode($data->car->Make); ?>
+    <b></b>
+    <?php
+    if ($data->DealStatus_ID == 1) {
+        echo CHtml::link('View Deal', array('view', 'id' => $data->ID));
+    } else {
+        echo CHtml::link('Deal Dashboard', array('update', 'id' => $data->ID));
+    }?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('DealStatus_ID')); ?>:</b>
@@ -22,7 +20,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('SalesPerson_ID')); ?>:</b>
-	<?php echo CHtml::encode($data->SalesPerson_ID); ?>
+	<?php echo CHtml::encode($data->salesPerson->Name); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('User_ID')); ?>:</b>

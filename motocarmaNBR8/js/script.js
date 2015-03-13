@@ -59,7 +59,20 @@ app.service('VehiclePhotoService', function ($q, $http, $timeout) {
                 for (i = 0; i < carData.length; i++)
                 {
                     car = carData[i];
-                    if (car.shotTypeAbbreviation === 'S') {
+                    if (car.subType == 'exterior' && car.shotTypeAbbreviation === 'S') {
+                        //code
+                        photoUrl = car.photoSrcs[0];
+                        noPhoto = false;
+                        break;
+                    }
+                    if (car.subType == 'exterior' && car.shotTypeAbbreviation === 'FQ') {
+                        //code
+                        photoUrl = car.photoSrcs[0];
+                        noPhoto = false;
+                        break;
+                    }
+
+                    if (car.subType == 'exterior' && car.shotTypeAbbreviation === 'E') {
                         //code
                         photoUrl = car.photoSrcs[0];
                         noPhoto = false;
@@ -154,7 +167,7 @@ function CarCtrl($http, $scope, VehicleService, VehiclePhotoService, PostService
 
 $scope.selectThisCar = function (style) {
         $scope.selectedCar = style;
-        console.log(JSON.stringify(style));
+    console.log(style);
         
         // SK TODO : This doesn't work.
         // POST the selected car to the user's page so that it can be captured and saved to the database.
@@ -164,17 +177,24 @@ $scope.selectThisCar = function (style) {
             data: JSON.stringify(style),
             headers: {'Content-Type': 'application/json'}
         }).success(function (data, status, headers, config) {
+
+            $(".extruder-container").html(data);
+            $('#extruderBottom').openMbExtruder(true);
+            $('#extruderLeft').openPanel()
             //$scope.selectedCar = style; // assign  $scope.persons here as promise is resolved here 
-            if(data.url == 'login'){
+
+            /*if(data.url == 'login'){
                 window.location.href = loginUrl; 
             }else if(data.url == 'dealer'){
                 window.location.href = dealUrl;
-            }
+             }*/
         }).error(function (data, status, headers, config) {
             $scope.status = status + ' ' + headers;
             console.log('failed');
         });
     };
+
+    $scope.displayGarage = '&displayGarage';
     /*//var method = 'POST';
      //var url = 'index.php?r=user/login';
      //$scope.codeStatus = "";
@@ -302,4 +322,21 @@ $scope.selectThisCar = function (style) {
     $scope.clear = function () {
         $scope.results.innerHTML = "";
     };
+}
+
+function selectThisCar() {
+    $.each($(".selCar:checked"), function (index, chkbox) {
+        $.ajax({
+            url: 'index.php?r=ajax/selectcar',
+            type: "POST",
+            data: $(chkbox).val(),
+            headers: {'Content-Type': 'application/json'},
+            success: function (result, textStatus, jqXHR) {
+                console.log("done");
+                $(".extruder-container").html(result);
+                $('#extruderBottom').openMbExtruder(true);
+                $('#extruderLeft').openPanel()
+            }
+        })
+    });
 }

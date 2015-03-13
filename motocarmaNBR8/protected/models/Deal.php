@@ -13,6 +13,20 @@
  * @property string $Price
  * @property string $DateAdded
  * @property string $LastModified
+ * @property string $DocFee
+ * @property string $Smog
+ * @property string $SmogCertFee
+ * @property string $TireFee
+ * @property string $DmvEt
+ * @property string $DmvAddiFee
+ * @property string $LicenseFee
+ * @property string $SalesTax
+ * @property string $DownPayment
+ * @property string $OfferPrice
+ * @property string $CounterOffer
+ * @property string $Apr
+ * @property integer $term
+ * @property string $rebate
  *
  * The followings are the available model relations:
  * @property Dealership $dealership
@@ -41,13 +55,14 @@ class Deal extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('Dealership_ID, Car_ID, DealStatus_ID, SalesPerson_ID, User_ID, Price', 'required'),
-			array('ID, Dealership_ID, Car_ID, DealStatus_ID, SalesPerson_ID, User_ID', 'numerical', 'integerOnly'=>true),
+            array('Dealership_ID, DealStatus_ID, SalesPerson_ID, User_ID, Price', 'required'),
+            array('ID, Dealership_ID, Car_ID, DealStatus_ID, SalesPerson_ID, User_ID, term, StyleID', 'numerical', 'integerOnly' => true),
 			array('Price', 'length', 'max'=>45),
+            array('DocFee, Smog, SmogCertFee, TireFee, DmvEt, DmvAddiFee, LicenseFee, SalesTax, DownPayment, OfferPrice, CounterOffer, Apr, rebate', 'length', 'max' => 10),
 			array('DateAdded, LastModified', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('ID, Dealership_ID, Car_ID, DealStatus_ID, SalesPerson_ID, User_ID, Price, DateAdded, LastModified', 'safe', 'on'=>'search'),
+            array('ID, Dealership_ID, Car_ID, DealStatus_ID, SalesPerson_ID, User_ID, Price, DateAdded, LastModified, Dealership_ID, DocFee, Smog, SmogCertFee, TireFee, DmvEt, DmvAddiFee, LicenseFee, SalesTax, DownPayment, Apr, term, rebate', 'safe', 'on' => 'search'),
 		);
 	}
 
@@ -75,7 +90,7 @@ class Deal extends CActiveRecord
 	{
 		return array(
 			'ID' => 'ID',
-                        'Dealership_ID' => 'Dealership',
+            'Dealership_ID' => 'Dealership',
 			'Car_ID' => 'Car',
 			'DealStatus_ID' => 'Deal Status',
 			'SalesPerson_ID' => 'Sales Person',
@@ -83,6 +98,21 @@ class Deal extends CActiveRecord
 			'Price' => 'Price',
 			'DateAdded' => 'Date Added',
 			'LastModified' => 'Last Modified',
+            'DocFee' => 'Documentation Fee',
+            'Smog' => 'Smog',
+            'SmogCertFee' => 'Smog Cert Fee',
+            'TireFee' => 'Tire Fee',
+            'DmvEt' => 'DMV ET',
+            'DmvAddiFee' => 'DMV Additional Fee',
+            'LicenseFee' => 'License Fee',
+            'SalesTax' => 'Sales Tax',
+            'DownPayment' => 'Down Payment',
+            'Apr' => 'APR',
+            'term' => 'Term',
+            'OfferPrice' => 'Offer Price',
+            'CounterOffer' => 'Counter Offer',
+            'rebate' => 'Rebate',
+            'StyleID' => 'Style ID'
 		);
 	}
 
@@ -117,6 +147,15 @@ class Deal extends CActiveRecord
             $list = CHtml::listdata($model,'ID','Name');
             return $list;
         }
+        
+        // If this is modified, also modify it in SavedCars and SalesPerson models.
+        public function getAllSalespersons()
+        {
+            $model = SalesPerson::model()->findAll(array('order'=>'Name'));
+            $list = CHtml::listdata($model,'ID','Name');
+            return $list;
+        }
+        
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 *
@@ -144,6 +183,22 @@ class Deal extends CActiveRecord
 		$criteria->compare('Price',$this->Price,true);
 		$criteria->compare('DateAdded',$this->DateAdded,true);
 		$criteria->compare('LastModified',$this->LastModified,true);
+        $criteria->compare('DocFee', $this->DocFee, true);
+        $criteria->compare('Smog', $this->Smog, true);
+        $criteria->compare('SmogCertFee', $this->SmogCertFee, true);
+        $criteria->compare('TireFee', $this->TireFee, true);
+        $criteria->compare('DmvEt', $this->DmvEt, true);
+        $criteria->compare('DmvAddiFee', $this->DmvAddiFee, true);
+        $criteria->compare('LicenseFee', $this->LicenseFee, true);
+        $criteria->compare('SalesTax', $this->SalesTax, true);
+        $criteria->compare('DownPayment', $this->DownPayment, true);
+        $criteria->compare('OfferPrice', $this->OfferPrice, true);
+        $criteria->compare('CounterOffer', $this->CounterOffer, true);
+        $criteria->compare('Apr', $this->Apr, true);
+        $criteria->compare('Apr', $this->Apr, true);
+        $criteria->compare('term', $this->term);
+        $criteria->compare('rebate', $this->rebate, true);
+        $criteria->compare('StyleID', $this->StyleID, true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -160,4 +215,27 @@ class Deal extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+
+    public function getDealParamChanges($newDealParams = array())
+    {
+        $changedParams = array();
+        if (count($newDealParams) == 0) {
+            return $changedParams;
+        } else {
+            $currentDealParams = $this->attributes;
+            foreach ($newDealParams as $param => $newValue) {
+                //echo $param."=>".$newValue."Old =>".$currentDealParams[$param]."<br/>";
+                if ($newValue != $currentDealParams[$param]) {
+                    $changedParams[$param]['old'] = $currentDealParams[$param];
+                    $changedParams[$param]['new'] = $newDealParams[$param];
+                }
+            }
+
+        }
+        //print_r($changedParams);die;
+        return $changedParams;
+
+    }
+
 }

@@ -162,3 +162,13 @@ div.wide.form .buttons, div.wide.form .hint, div.wide.form .errorMessage
 	clear: left;
 	padding-left: 110px;
 }
+
+div.calculator label {
+    display: inline-block;
+    width: 130px;
+}
+
+div.calculator input[type=text] {
+    width: 80px;
+    text-align: right;
+}

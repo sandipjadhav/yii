@@ -38,7 +38,14 @@ class ProfileController extends Controller
 		}
 		
 		if(isset($_POST['User']))
-		{
+		{  
+                    
+                    if(isset($_FILES['Profile']['name']) && is_array($_FILES['Profile']['name'])){
+                        if(array_key_exists('profilePhoto', $_FILES['Profile']['name'])){
+                           $_POST['Profile']['profilePhoto'] = $_FILES['Profile']['name']['profilePhoto'];
+                        } 
+                    }
+                    
 			$model->attributes=$_POST['User'];
 			$profile->attributes=$_POST['Profile'];
 			
