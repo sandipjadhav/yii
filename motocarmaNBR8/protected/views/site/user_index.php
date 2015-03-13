@@ -55,7 +55,7 @@ User Home
                 <li><?php echo CHtml::link('Saved Cars', array('savedCars/index')); ?></li>
             </ul>
 
-<ul>
+    <!--ul>
                 <li>Recent Car Selected : 
                     <div id="CarInfo">
                         <ul>
@@ -67,7 +67,7 @@ User Home
                         </ul>       
                     </div>
                 </li>
-            </ul>
+            </ul -->
 
 <?php
     if($guestStyleExists && $guestStyleExists !=''){

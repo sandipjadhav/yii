@@ -4,7 +4,10 @@
 
 	<p class="note"><?php echo UserModule::t('Fields with <span class="required">*</span> are required.'); ?></p>
 
-	<?php echo CHtml::errorSummary(array($model,$profile)); ?>
+    <?php
+    if ($profile) {
+        echo CHtml::errorSummary(array($model, $profile));
+    } ?>
 
 	<div class="row">
 		<?php echo CHtml::activeLabelEx($model,'username'); ?>
@@ -44,6 +47,7 @@
         </div>
     <?php
     }
+    if ($profile) {
 		$profileFields=$profile->getFields();
 		if ($profileFields) {
 			foreach($profileFields as $field) {
@@ -66,6 +70,7 @@
 			<?php
 			}
 		}
+    }
 ?>
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

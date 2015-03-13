@@ -24,7 +24,14 @@ $this->menu=array(
     if(Yii::app()->user->hasFlash('error')) {
             echo '<div class="flash-error">' . Yii::app()->user->getFlash('error') . "</div>\n";
         }
-    
-    $this->renderPartial('_dealWizard', array('model'=>$model,'arrCarInfo'=>$arrCarInfo));
+
+    $this->renderPartial('_dealWizard', array('model' => $model, 'arrCarInfo' => $arrCarInfo, 'currentRole' => $currentRole, 'messagesAdapter' => $messagesAdapter,
+        'dealer' => $dealer,
+        'salesperson' => $salesperson,
+        'dealHistory' => $dealHistory,
+        'msgModel' => $msgModel,
+        'reviews' => $reviews,
+        'tmvObj' => $tmvObj
+    ));
 }
 ?>

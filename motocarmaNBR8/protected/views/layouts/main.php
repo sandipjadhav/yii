@@ -19,6 +19,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/font-awesome.min.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/common.css"/>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
@@ -38,7 +39,7 @@
                 array('label' => Yii::t('app', 'Search'), 'url' => array('/site/index')),
                 array('label'=>Yii::t('app','Contact'), 'url'=>array('/site/contact')),
                 array('label'=>Yii::t('app','Login'), 'url'=>array('/user/login'),'visible'=>Yii::app()->user->isGuest),
-                //array('label'=>Yii::t('app','Rights'), 'url'=>array('/rights')),
+                array('label' => Yii::t('app', 'Rights'), 'url' => array('/rights')),
                 array('url' => Yii::app()->getModule('message')->inboxUrl,
                     'label' => 'Messages' .
                         (Yii::app()->getModule('message')->getCountUnreadedMessages(Yii::app()->user->getId()) ?
@@ -89,8 +90,13 @@ array('url'=>Yii::app()->getModule('user')->logoutUrl, 'label'=>Yii::app()->getM
     )); ?><!-- breadcrumbs -->
 <?php endif ?>
 <div class="cb"></div>
-<div id="extruderBottom" class="{title:'Wishlist', url: 'index.php?r=ajax/garageInfo'}">
-</div>
+<?php
+$roles = Rights::getAssignedRoles(Yii::app()->user->Id);
+$current_role = strtolower(current($roles)->name);
+if (Yii::app()->user->Id == null || $current_role == 'authenticated') {
+    ?>
+    <div id="extruderBottom" class="{title:'Wishlist', url: 'index.php?r=ajax/garageInfo'}"></div>
+<?php } ?>
 <?php echo $content; ?>
 
 <div class="clear"></div>

@@ -59,7 +59,20 @@ app.service('VehiclePhotoService', function ($q, $http, $timeout) {
                 for (i = 0; i < carData.length; i++)
                 {
                     car = carData[i];
-                    if (car.shotTypeAbbreviation === 'S') {
+                    if (car.subType == 'exterior' && car.shotTypeAbbreviation === 'S') {
+                        //code
+                        photoUrl = car.photoSrcs[0];
+                        noPhoto = false;
+                        break;
+                    }
+                    if (car.subType == 'exterior' && car.shotTypeAbbreviation === 'FQ') {
+                        //code
+                        photoUrl = car.photoSrcs[0];
+                        noPhoto = false;
+                        break;
+                    }
+
+                    if (car.subType == 'exterior' && car.shotTypeAbbreviation === 'E') {
                         //code
                         photoUrl = car.photoSrcs[0];
                         noPhoto = false;

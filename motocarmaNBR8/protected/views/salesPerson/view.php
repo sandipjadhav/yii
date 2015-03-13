@@ -24,7 +24,7 @@ $this->menu=array(
 		//'ID',
                 array('name'=>'Dealership', 'value'=>$model->dealership->Name),
 		array('name'=>'Username', 'value'=>$user->username),
-                array('name'=>'First Name', 'value'=>$user->profile->getAttribute('firstname')),
+            array('name' => 'First Name', 'value' => $user->profile->getAttribute('firstname')),
                 array('name'=>'Last Name', 'value'=>$user->profile->getAttribute('lastname')),
                 array('name'=>'ContactPhone', 'value'=>$model->ContactPhone),
                 array('name'=>'Email', 'value'=>$user->email),

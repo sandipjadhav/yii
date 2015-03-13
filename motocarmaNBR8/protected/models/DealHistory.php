@@ -10,6 +10,8 @@
  * @property integer $DealStatus_ID
  * @property integer $SalesPerson_ID
  * @property integer $User_ID
+ * @property integer $message_id
+ * @property string $ChangedParams
  * @property string $DealStatus
  * @property string $Make
  * @property string $Model
@@ -20,6 +22,7 @@
  * @property string $UserName
  *
  * The followings are the available model relations:
+ * @property Messages $message
  * @property Car $car
  * @property Deal $deal
  * @property DealStatus $dealStatus
@@ -45,11 +48,12 @@ class DealHistory extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('Deal_ID', 'required'),
-			array('ID, Car_ID, Deal_ID, DealStatus_ID, SalesPerson_ID, User_ID', 'numerical', 'integerOnly'=>true),
-			array('DealStatus, Make, Model, Price, SalesPersonUserName, StyleID, Year, UserName', 'length', 'max'=>45),
+            array('ID, Car_ID, Deal_ID, DealStatus_ID, SalesPerson_ID, User_ID, message_id', 'numerical', 'integerOnly' => true),
+            array('ChangedParams', 'length', 'max' => 500),
+            array('DealStatus, Make, Model, Price, SalesPersonUserName, StyleID, Year, UserName', 'length', 'max' => 45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('ID, Car_ID, Deal_ID, DealStatus_ID, SalesPerson_ID, User_ID, DealStatus, Make, Model, Price, SalesPersonUserName, StyleID, Year, UserName', 'safe', 'on'=>'search'),
+            array('ID, Car_ID, Deal_ID, DealStatus_ID, SalesPerson_ID, User_ID, message_id, ChangedParams, DealStatus, Make, Model, Price, SalesPersonUserName, StyleID, Year, UserName', 'safe', 'on' => 'search'),
 		);
 	}
 
@@ -61,6 +65,7 @@ class DealHistory extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+            'message' => array(self::BELONGS_TO, 'Messages', 'message_id'),
 			'car' => array(self::BELONGS_TO, 'Car', 'Car_ID'),
 			'deal' => array(self::BELONGS_TO, 'Deal', 'Deal_ID'),
 			'dealStatus' => array(self::BELONGS_TO, 'DealStatus', 'DealStatus_ID'),
@@ -81,6 +86,8 @@ class DealHistory extends CActiveRecord
 			'DealStatus_ID' => 'Deal Status',
 			'SalesPerson_ID' => 'Sales Person',
 			'User_ID' => 'User',
+            'message_id' => 'Message',
+            'ChangedParams' => 'Changed Params',
 			'DealStatus' => 'Deal Status',
 			'Make' => 'Make',
 			'Model' => 'Model',
@@ -116,7 +123,9 @@ class DealHistory extends CActiveRecord
 		$criteria->compare('DealStatus_ID',$this->DealStatus_ID);
 		$criteria->compare('SalesPerson_ID',$this->SalesPerson_ID);
 		$criteria->compare('User_ID',$this->User_ID);
-		$criteria->compare('DealStatus',$this->DealStatus,true);
+        $criteria->compare('message_id', $this->message_id);
+        $criteria->compare('ChangedParams', $this->ChangedParams, true);
+        $criteria->compare('DealStatus', $this->DealStatus, true);
 		$criteria->compare('Make',$this->Make,true);
 		$criteria->compare('Model',$this->Model,true);
 		$criteria->compare('Price',$this->Price,true);
@@ -177,4 +186,17 @@ class DealHistory extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+    public function getUserName()
+    {
+        $user_profile_name = '';
+        $UserObj = User::model()->find($this->User_ID);
+        if ($UserObj && $UserObj->profile) {
+            $user_profile_name = trim($UserObj->profile->getAttribute('firstname') . ' ' . $UserObj->profile->getAttribute('lastname'));
+        } else {
+            $user_profile_name = 'N/A';
+        }
+
+        return $user_profile_name;
+    }
 }

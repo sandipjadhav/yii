@@ -19,9 +19,9 @@ $this->breadcrumbs=array(
 		//'id',
 		'username',
 	);
-	
+
 	$profileFields=ProfileField::model()->forOwner()->sort()->findAll();
-	if ($profileFields) {
+if ($model->profile) {
 		foreach($profileFields as $field) {
                        $attribute_value = $model->profile->getAttribute($field->varname);
                        $widgetView = $field->widgetView($model->profile);

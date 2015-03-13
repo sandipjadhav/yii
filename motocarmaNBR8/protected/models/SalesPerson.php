@@ -143,4 +143,31 @@ class SalesPerson extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+    public function getPhoto()
+    {
+        $photoUrl = Yii::app()->params['TEMP_PROFILE_PHOTO'];
+        if (!$this->user->profile) {
+            $profileFields = ProfileField::model()->forAll()->sort()->findAll();
+            if ($profileFields) {
+                foreach ($profileFields as $field) {
+                    if ($field->varname == 'profilePhoto') {
+                        $attribute_value = $this->user->profile->getAttribute($field->varname);
+                        $photoUrl = $attribute_value;
+                    }
+                }
+            }
+        }
+        return $photoUrl;
+    }
+
+    public function getSalespersonName()
+    {
+        $Name = '';
+        if ($this->user->profile) {
+            $Name = $this->user->profile->getAttribute('firstname') . " " . $this->user->profile->getAttribute('lastname');
+        }
+        $Name = trim($Name) == '' ? $this->Name : trim($Name);
+        return $Name;
+    }
 }

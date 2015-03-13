@@ -98,7 +98,8 @@ $this->pageTitle = 'Welcome to MotoCarma - Car Buying Reincarnated';
                 <div>Trim: {{style.trim}}</div>
                 <div>Price: {{style.price.baseMSRP}}</div>
                 <span style="right: 0">
-            <label for="selCar">Add car to wishlist</label>:<input type="checkbox" class='selCar' id="selCar"
+            <label for="selCar">Add car to wishlist</label>:<input type="checkbox" styleid='{{style.id}}' class='selCar'
+                                                                   id="selCar"
                                                                    value="{{style}}">
 
         </span>
