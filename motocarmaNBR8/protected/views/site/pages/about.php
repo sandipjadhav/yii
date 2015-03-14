@@ -27,7 +27,7 @@ $this->pageTitle = 'Welcome to MotoCarma - Car Buying Reincarnated';
                     <p>motoCarma provides a new car buyer with an alternative to the lengthy showroom visit that has
                         been the standard experience for car shoppers since the fifties.</p>
 
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Start your search</a></p>
+                    <p><a class="btn btn-lg btn-primary" href="index.php?r=site/index" role="button">Start your search</a></p>
                 </div>
             </div>
         </div>
@@ -40,7 +40,7 @@ $this->pageTitle = 'Welcome to MotoCarma - Car Buying Reincarnated';
 
                     <p>Ever wonder why they make it so hard to buy a car?<br/>
                         We did too, and that's why we created Motocarma.</p>
-                    <!-- <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>-->
+                     <p><a class="btn btn-lg btn-primary" href="index.php?r=site/index" role="button">Search Now!</a></p>
                 </div>
             </div>
         </div>
@@ -56,7 +56,7 @@ $this->pageTitle = 'Welcome to MotoCarma - Car Buying Reincarnated';
 
                     <p>&nbsp;</p>
 
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Start your search</a></p>
+                    <p><a class="btn btn-lg btn-primary" href="index.php?r=site/index" role="button">Start your search</a></p>
                 </div>
             </div>
         </div>
@@ -72,19 +72,20 @@ $this->pageTitle = 'Welcome to MotoCarma - Car Buying Reincarnated';
 </div><!-- /.carousel -->
 <div class="container">
 <div class="row">
+<br>
     <div class="col-md-12">
-        <div class="col-md-4" align="center">
+        <div class="col-md-6" align="center">
             <i class="fa fa-check fa-3"></i><br>
             <h4 class="highlight">I KNOW WHAT I WANT</h4>
 
             <p>
                 You’ve finished your research,<br>you’ve nailed it down to make, model, <br>trim level and even a
-                color<br> and just want to get started.
+                color and just want to get started.
             </p>
 
-            <p><a class="btn btn-sm btn-primary" href="#" role="button">Start your search</a></p>
+            <p><a class="btn btn-md btn-primary" href="index.php?r=site/index" role="button">Start your search</a></p>
         </div>
-        <div class="col-md-4" align="center">
+        <!--<div class="col-md-4" align="center">
             <i class="fa fa-exchange fa-3"></i><br>
             <h4 class="highlight">I KINDA KNOW WHAT I WANT</h4>
 
@@ -97,18 +98,16 @@ $this->pageTitle = 'Welcome to MotoCarma - Car Buying Reincarnated';
 
             <p><a class="btn btn-sm btn-info" href="#" role="button">Start your search</a></p>
 
-        </div>
-        <div class="col-md-4" align="center">
+        </div>-->
+        <div class="col-md-6" align="center">
             <i class="fa fa-question fa-3"></i><br>
             <h4 class="highlight">I NEED HELP</h4>
 
             <p>
-                Use our research tools that include <br>
-                reviews, options & technical stats as <br>
-                well as side by side comparisons,<br>
-                you’re closer than you think. </p>
+                Use our research tools that include reviews, <br>options & technical stats as 
+                well as side by side comparisons, <br>you’re closer than you think. </p>
 
-            <p><a class="btn btn-sm btn-warning" href="#" role="button">Research</a></p>
+            <p><a class="btn btn-md btn-warning" href="index.php?r=site/index" role="button">Search and Research</a></p>
 
         </div>
 
@@ -317,7 +316,7 @@ $this->pageTitle = 'Welcome to MotoCarma - Car Buying Reincarnated';
 </div>
 
 <div class="full-wide">
-    <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/mom-child.jpg" alt="Third slide">
+    <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/road-and-blue-sky.jpg" alt="Third slide">
 </div>
 <!--<h1>About</h1>
 

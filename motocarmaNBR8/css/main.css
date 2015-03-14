@@ -33,9 +33,23 @@ body {
     margin: 0 auto;
     padding: 0;
 }
-
+ul#miniGarage {
+	list-style-type:none;
+	padding:15px;
+}
 #content {
     padding-left: 15px;
+}
+
+#content .carousel{
+    margin-left: -15px;
+}
+
+#content .full-wide{
+    margin-left: -15px;
+}
+.mainContent {
+ padding-left: 15px;	
 }
 
 #sidebar {
@@ -106,15 +120,24 @@ body {
     left: 0;
     overflow: hidden;
     position: relative;
-    width: 100%;
+   /* width: 100%;*/
 }
 
 .over-text {
-    color: #FFFFFF;
-    left: 20px;
+    color: #333;
+    right: 200px;
     position: absolute;
     top: 25px;
     z-index: 1000;
+}
+@media (min-width: 600px) {
+.over-text {
+    color: #333;
+    right: 50px;
+    position: absolute;
+    top: 25px;
+    z-index: 1000;
+}
 }
 
 div.flash-error {
@@ -307,11 +330,14 @@ div.search-form {
 
 .carousel {
     height: 500px;
-    margin-bottom: 60px;
+   /* margin-bottom: 60px;*/
 }
 
 .carousel-caption {
     z-index: 10;
+}
+.carousel-caption h1 {
+color:#fff;	
 }
 
 .carousel .item {
@@ -461,28 +487,29 @@ div.search-form {
 .carousel {
 }
 
-.Table {
+.Table
+{
     display: table;
 }
-
-.Title {
+.Title
+{
     display: table-caption;
     text-align: center;
     font-weight: bold;
     font-size: larger;
 }
-
-.Heading {
+.Heading
+{
     display: table-row;
     font-weight: bold;
     text-align: center;
 }
-
-.Row {
+.Row
+{
     display: table-row;
 }
-
-.Cell {
+.Cell
+{
     display: table-cell;
     border: solid;
     border-width: thin;
@@ -491,37 +518,37 @@ div.search-form {
     padding-top: 2px;
 }
 
-.compareCell {
+
+.compareCell{
     max-width: 400px;
 }
 
-div.calCol {
+div.calCol{
     float: left;
 
 }
+
 
 .dealership, .salesperson, .dealPreview {
     padding-left: 15px;
 }
 
-.calculator {
+.calculator{
 
     columns: 100px 2;
 }
 
-#miniGarage a {
+#miniGarage a{
     color: #ffffff;
 }
 
 #calculator .Table {
     width: 100%;
 }
-
 #calculator .Table .Row {
     width: 100%;
 }
-
-.calcCell {
+.calcCell{
     width: 50%;
 }
 

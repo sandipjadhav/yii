@@ -35,11 +35,11 @@
         <?php $this->widget('zii.widgets.CMenu', array(
             'items'=>array(
                 array('label'=>Yii::t('app','Home'), 'url'=>array('/site/page', 'view'=>'about')),
-                array('label'=>Yii::t('app','User Home'), 'url'=>array('/site/UserHome'), 'visible'=>!Yii::app()->user->isGuest),
+                //array('label'=>Yii::t('app','User Home'), 'url'=>array('/site/UserHome'), 'visible'=>!Yii::app()->user->isGuest),
                 array('label' => Yii::t('app', 'Search'), 'url' => array('/site/index')),
                 array('label'=>Yii::t('app','Contact'), 'url'=>array('/site/contact')),
                 array('label'=>Yii::t('app','Login'), 'url'=>array('/user/login'),'visible'=>Yii::app()->user->isGuest),
-                array('label' => Yii::t('app', 'Rights'), 'url' => array('/rights')),
+               // array('label'=>Yii::t('app','Rights'), 'url'=>array('/rights')),
                 array('url' => Yii::app()->getModule('message')->inboxUrl,
                     'label' => 'Messages' .
                         (Yii::app()->getModule('message')->getCountUnreadedMessages(Yii::app()->user->getId()) ?
@@ -93,9 +93,9 @@ array('url'=>Yii::app()->getModule('user')->logoutUrl, 'label'=>Yii::app()->getM
 <?php
 $roles = Rights::getAssignedRoles(Yii::app()->user->Id);
 $current_role = strtolower(current($roles)->name);
-if (Yii::app()->user->Id == null || $current_role == 'authenticated') {
-    ?>
-    <div id="extruderBottom" class="{title:'Wishlist', url: 'index.php?r=ajax/garageInfo'}"></div>
+if(Yii::app()->user->Id == null || $current_role == 'authenticated'){
+?>
+<div id="extruderBottom" class="{title:'Garage', url: 'index.php?r=ajax/garageInfo'}"></div>
 <?php } ?>
 <?php echo $content; ?>
 
