@@ -28,8 +28,8 @@ $this->pageTitle = 'Welcome to MotoCarma - Car Buying Reincarnated';
 <body>
 
 <div class="full-wide">
-    <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/beach-laptop.jpg"
-         alt="Woman on the Beach with her Laptop">
+    <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/girl-laptop.jpg"
+         alt="Girl on her couch with her Laptop">
 
     <div class="over-text"><h2>Connect to a dealer in real time, <br>
             on your time.</h2>
@@ -86,7 +86,12 @@ $this->pageTitle = 'Welcome to MotoCarma - Car Buying Reincarnated';
                 Clear Results
             </button>
         </span>
-
+ <span>
+        <button ng-disabled="!myCars.styles.length" class="btn btn-primary" onclick="selectThisCar(style)">Save to
+            Garage
+        </button>
+        </span>
+       <div ng-hide="myCars.styles.length" style="padding-top:20px;">No cars found or selected.</div>
                 <hr/>
         <div id="results" ng-repeat="style in myCars.styles">
             <div class="entry" id="{{style.id}}">
@@ -98,21 +103,13 @@ $this->pageTitle = 'Welcome to MotoCarma - Car Buying Reincarnated';
                 <div>Trim: {{style.trim}}</div>
                 <div>Price: {{style.price.baseMSRP}}</div>
                 <span style="right: 0">
-            <label for="selCar">Add car to wishlist</label>:<input type="checkbox" styleid='{{style.id}}' class='selCar'
-                                                                   id="selCar"
+            <label for="selCar">Add car to Garage</label>:<input type="checkbox" styleid='{{style.id}}' class='selCar' id="selCar"
                                                                    value="{{style}}">
 
         </span>
             </div>
         </div>
-        <span>
-        <button ng-disabled="!myCars.styles.length" class="btn btn-primary" onclick="selectThisCar(style)">Save to
-            wishlist
-        </button>
-        </span>
-        <br/>
-
-                <div ng-hide="myCars.styles.length">No cars found or selected.</div>
+       
             </div>
             <div style="clear:both;"></div>
         </div>
