@@ -79,7 +79,7 @@ ul#miniGarage {
     height: 75px;
     padding-top: 20px;
     position: relative;
-    width: 650px;
+ /*   width: 650px;*/
 }
 
 #mainmenu ul {
@@ -122,12 +122,37 @@ ul#miniGarage {
     position: relative;
    /* width: 100%;*/
 }
+#content .full-wide-contact {
+	margin-left: -15px;
+}
+.full-wide-contact {
+    height: 250px;
+    left: 0;
+    overflow: hidden;
+    position: relative;
+   /* width: 100%;*/
+}
 
 .over-text {
     color: #333;
     right: 200px;
     position: absolute;
     top: 25px;
+    z-index: 1000;
+}
+.over-text-light {
+    color: #fff;
+    left: 25px;
+    position: absolute;
+    top: 40px;
+    z-index: 1000;
+}
+.over-text-inbox {
+    color: #fff;
+    left: 25px;
+	font-size:25px;
+    position: absolute;
+    top: 40px;
     z-index: 1000;
 }
 @media (min-width: 600px) {
