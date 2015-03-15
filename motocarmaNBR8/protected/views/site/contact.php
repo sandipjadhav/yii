@@ -3,12 +3,22 @@
 /* @var $model ContactForm */
 /* @var $form CActiveForm */
 
-$this->pageTitle=Yii::app()->name . ' - Contact Us';
-$this->breadcrumbs=array(
-	'Contact',
-);
+$this->pageTitle = 'Welcome to MotoCarma - Contact Us';
+//$this->breadcrumbs=array(
+//	'Contact',
+//);
 ?>
 
+<div class="full-wide-contact">
+    <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/alaskan-highway.jpg"
+         alt="Road in Alaska">
+
+ <!--   <div class="over-text-light"><h2>Contact us with any questions!</h2>
+
+    </div>-->
+</div>
+<div id="container" class="page">
+<div class="row">
 <h1>Contact Us</h1>
 
 <?php if(Yii::app()->user->hasFlash('contact')): ?>
@@ -80,6 +90,10 @@ If you have business inquiries or other questions, please fill out the following
 
 <?php $this->endWidget(); ?>
 
-</div><!-- form -->
+</div><!-- end form -->
+
+
+</div><!-- end row -->
+</div><!-- end container -->
 
 <?php endif; ?>

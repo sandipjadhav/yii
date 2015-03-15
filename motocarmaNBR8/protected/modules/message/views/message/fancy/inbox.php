@@ -1,17 +1,26 @@
 <?php $this->pageTitle=Yii::app()->name . ' - '.MessageModule::t("Messages:inbox"); ?>
 <?php
-	$this->breadcrumbs=array(
-		MessageModule::t("Messages"),
-		MessageModule::t("Inbox"),
-	);
+	//$this->breadcrumbs=array(
+		//MessageModule::t("Messages"),
+		//MessageModule::t("Inbox"),
+	//);
 ?>
+<div class="full-wide-contact">
+    <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/guy-beach.jpg"
+         alt="Guy on the beach with his laptop">
 
+   <!-- <div class="over-text-inbox">Inbox
+
+    </div>-->
+</div>
+<h2><?php echo MessageModule::t('Inbox'); ?></h2>
 <?php $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_styles') ?>
 <?php $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_flash') ?>
+<div id="container" class="page">
 <div class="row">
 	<?php $this->renderPartial(Yii::app()->getModule('message')->viewPath . '/_navigation') ?>
-	<div class="span13">
-		<h2><?php echo MessageModule::t('Inbox'); ?></h2>
+	
+		
 
 		<?php if ($messagesAdapter->data): ?>
 			<?php $form = $this->beginWidget('CActiveForm', array(
@@ -48,5 +57,6 @@
 			<?php $this->widget('CLinkPager', array('header' => '', 'pages' => $messagesAdapter->getPagination(), 'htmlOptions' => array('class' => 'pager'))) ?>
 		</div>
 		<?php endif; ?>
-	</div>
+
 </div>
+</div> <!-- end container -->

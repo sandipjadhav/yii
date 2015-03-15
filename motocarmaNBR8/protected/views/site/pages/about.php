@@ -15,6 +15,7 @@ $this->pageTitle = 'Welcome to MotoCarma - Car Buying Reincarnated';
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
         <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
     </ol>
     <div class="carousel-inner" role="listbox">
         <div class="item active">
@@ -57,6 +58,19 @@ $this->pageTitle = 'Welcome to MotoCarma - Car Buying Reincarnated';
                     <p>&nbsp;</p>
 
                     <p><a class="btn btn-lg btn-primary" href="index.php?r=site/index" role="button">Start your search</a></p>
+                </div>
+            </div>
+        </div>
+           <div class="item">
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/slide-4.jpg" alt="Second slide">
+
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>Car Buying Reincarnated</h1>
+
+                    <p>Ever wonder why they make it so hard to buy a car?<br/>
+                        We did too, and that's why we created Motocarma.</p>
+                     <p><a class="btn btn-lg btn-primary" href="index.php?r=site/index" role="button">Search Now!</a></p>
                 </div>
             </div>
         </div>
@@ -170,16 +184,16 @@ $this->pageTitle = 'Welcome to MotoCarma - Car Buying Reincarnated';
         <hr class="featurette-divider">
         <br>
 
-        <div class="section-content row">
+            <div class="section-content row">
             <div class="col-sm-4" align="center">
 
                 <i class="fa fa-laptop fa-3"></i><br>
 
                 <h2 class="highlight">Research Vehicles</h2>
 
-                <p class="thin">Once a visitor arrives on our site they can research vehicles, read reviews and
-                    settle on a vehicle.<br>
-                    They can also learn about us, how our process works and whether it may be a fit for them.</p>
+                <p class="thin">Research, review, compare and discover the <br>
+                  True Cost To Own and the True Market Value<br>
+                of the vehicles that interest you.</p>
 
                 <!--<span class="icon icon-arrows-04"></span>-->
             </div>
@@ -189,9 +203,10 @@ $this->pageTitle = 'Welcome to MotoCarma - Car Buying Reincarnated';
 
                 <h2 class="highlight">Login</h2>
 
-                <p class="thin">In order to move forward the consumer will need to create a login.<br>
-                    At this stage the consumer may want to create an anonymous identity until they feel comfortable
-                    revealing themselves.</p>
+               <p class="thin">You can create a login and opt to use your identity<br>
+                  or a motoCarma alias until you’re ready to reveal<br>
+                  yourself to the dealer representative.</p>
+                
 
                 <!--<span class="icon icon-arrows-04"></span>-->
             </div>
@@ -201,8 +216,10 @@ $this->pageTitle = 'Welcome to MotoCarma - Car Buying Reincarnated';
 
                 <h2 class="highlight">Pricing</h2>
 
-                <p class="thin">Using the selected dealer's pricing matrix the consumer can get a price quote on the
-                    vehicle they're interested in.</p>
+                <p class="thin">Once logged in you can see a specific dealer’s <br>
+                  inventory and reach out to a motoCarma designated <br>
+                  sales representative and receive a price quote.</p>
+                
 
             </div>
         </div>
