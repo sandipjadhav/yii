@@ -15,19 +15,19 @@ Yii::app()->customUtility->addJqueryDatePicker($dateFields);
 	array('label'=>'View Deal', 'url'=>array('view', 'id'=>$model->ID)),
 	array('label'=>'Manage Deal', 'url'=>array('admin')),
 );*/
-?>
+?> 
 
-    <h2>Deal Dashboard</h2>
+<h2>Deal Dashboard</h2>
 
-<?php
-$this->renderPartial('_dealWizard', array('model' => $model,
-    'currentRole' => $currentRole,
-    'arrCarInfo' => $arrCarInfo,
-    'messagesAdapter' => $messagesAdapter,
-    'dealer' => $dealer,
-    'salesperson' => $salesperson,
-    'dealHistory' => $dealHistory,
-    'msgModel' => $msgModel,
-    'reviews' => $reviews
-));
+<?php 
+$this->renderPartial('_dealWizard', array('model'=>$model,
+        'currentRole'=>$currentRole,
+        'arrCarInfo'=>$arrCarInfo,
+        'messagesAdapter'=>$messagesAdapter,
+        'dealer'=>$dealer,
+        'salesperson'=>$salesperson,
+        'dealHistory'=>$dealHistory,
+        'msgModel' => $msgModel,
+        'reviews'=>$reviews
+    ));
 ?>

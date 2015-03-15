@@ -10,6 +10,7 @@
           media="screen, projection"/>
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css"
           media="print"/>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,300,700,600' rel='stylesheet' type='text/css'>
     <!--[if lt IE 8]>
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css"
           media="screen, projection"/>
@@ -50,6 +51,7 @@
             ,
             ))); ?>
     </div>
+        <div class="tagline">From <span class="highlight">Search</span> to <span class="highlight">Signature.</span></div>
 </div>
 <!-- header -->
 <!--<div class="container" id="page">-->
