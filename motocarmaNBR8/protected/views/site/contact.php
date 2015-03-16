@@ -19,7 +19,7 @@ $this->pageTitle = 'Welcome to MotoCarma - Contact Us';
 </div>
 <div id="container" class="page">
 <div class="row">
-<h1>Contact Us</h1>
+<h2>Contact Us</h2>
 
 <?php if(Yii::app()->user->hasFlash('contact')): ?>
 

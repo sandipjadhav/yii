@@ -1,7 +1,7 @@
 
 body {
     color: #555555;
-    font: 10pt Arial, Helvetica, sans-serif;
+   font-family: 'Open Sans', sans-serif!important;
     margin: 0;
     padding: 0;
 }
@@ -94,10 +94,11 @@ ul#miniGarage {
 #mainmenu ul li a {
     background-color: transparent;
     color: #666666;
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 18px;
+    font-weight: 400;
     padding: 5px 8px;
     text-decoration: none;
+	text-transform:uppercase;
 }
 
 #mainmenu ul li a:hover {
@@ -114,7 +115,15 @@ ul#miniGarage {
     color: #2C9E04;
     text-decoration: none;
 }
-
+.tagline {
+	position:relative;
+	font-weight:300;
+	font-size:16px;
+	float:right;
+	right:50px;
+	  height: 75px;
+  padding-top: 27px;
+}
 .full-wide {
     height: 450px;
     left: 0;
@@ -135,7 +144,7 @@ ul#miniGarage {
 
 .over-text {
     color: #333;
-    right: 200px;
+    right: 100px;
     position: absolute;
     top: 25px;
     z-index: 1000;
@@ -155,15 +164,16 @@ ul#miniGarage {
     top: 40px;
     z-index: 1000;
 }
-@media (min-width: 600px) {
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px)  { 
 .over-text {
-    color: #333;
+
     right: 50px;
-    position: absolute;
-    top: 25px;
-    z-index: 1000;
+ 
 }
 }
+
 
 div.flash-error {
     background: none repeat scroll 0 0 #FBE3E4;
@@ -527,7 +537,7 @@ color:#fff;
 {
     display: table-row;
     font-weight: bold;
-    text-align: center;
+ 
 }
 .Row
 {
@@ -536,10 +546,10 @@ color:#fff;
 .Cell
 {
     display: table-cell;
-    border: solid;
+   /* border: solid;*/
     border-width: thin;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
     padding-top: 2px;
 }
 
@@ -564,9 +574,12 @@ div.calCol{
 }
 
 #miniGarage a{
-    color: #ffffff;
+    color: #2C9E04!important;
 }
 
+.extruder .extruder-content {
+  background: none repeat scroll 0 0 #e6e6e6!important;	
+}
 #calculator .Table {
     width: 100%;
 }

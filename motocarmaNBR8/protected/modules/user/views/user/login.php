@@ -1,11 +1,19 @@
 <?php
-$this->pageTitle=Yii::app()->name . ' - '.UserModule::t("Login");
-$this->breadcrumbs=array(
-	UserModule::t("Login"),
-);
+$this->pageTitle=Yii::app()->name . ' - '.UserModule::t("Welcome to motoCarma | Login");
+//$this->breadcrumbs=array(
+	//UserModule::t("Login"),
+//);
 ?>
 
-<h1><?php echo UserModule::t("Login"); ?></h1>
+<div class="full-wide-contact">
+    <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/guy-beach.jpg"
+         alt="Guy on the beach with his laptop">
+
+</div>
+<h2><?php echo UserModule::t("Login"); ?></h2>
+ <p class="highlight">Through instant messaging, email, chat or even voice you can communicate with
+                    the representative and begin your car purchase.
+                </p>
 
 <?php if(Yii::app()->user->hasFlash('loginMessage')): ?>
 
